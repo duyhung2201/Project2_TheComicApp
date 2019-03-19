@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol SelectCellDelegate {
+    func pushVC(url: String)
+}
+
 class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var delegate: SelectCellDelegate?
     
     var title: String = "" {
         didSet {
@@ -63,6 +69,8 @@ extension HomeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         
         return cell
     }
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let urlComic = data[indexPath.row].url
+        delegate?.pushVC(url: urlComic)
+    }
 }

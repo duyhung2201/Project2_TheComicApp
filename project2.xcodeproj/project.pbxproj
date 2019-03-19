@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1887FD89223BDFB200AA0282 /* In4ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887FD88223BDFB200AA0282 /* In4ComicModel.swift */; };
+		18910FF62241026700E913C1 /* IssueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18910FF52241026700E913C1 /* IssueModel.swift */; };
+		1898ED5E2240980E001BA577 /* PageReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898ED5C2240980E001BA577 /* PageReading.swift */; };
+		1898ED5F2240980E001BA577 /* PageReading.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1898ED5D2240980E001BA577 /* PageReading.xib */; };
+		18C85A72223E48FC00CF45AE /* IssueReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C85A70223E48FC00CF45AE /* IssueReading.swift */; };
+		18C85A73223E48FC00CF45AE /* IssueReading.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C85A71223E48FC00CF45AE /* IssueReading.xib */; };
+		18E4F118223CF82500604154 /* In4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4F116223CF82500604154 /* In4ViewController.swift */; };
+		18E4F119223CF82500604154 /* In4ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E4F117223CF82500604154 /* In4ViewController.xib */; };
 		2D3B8FECAA4E3B9B7FEDCB58 /* Pods_project2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFFECEFBE9187436D515F825 /* Pods_project2UITests.framework */; };
 		3D8E3B41A574F250B02CB6D7 /* Pods_project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5311B910552FBE623C64B8 /* Pods_project2.framework */; };
 		406302F922369E88002BB8DE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406302F722369E88002BB8DE /* HomeTableViewCell.swift */; };
@@ -47,6 +55,14 @@
 
 /* Begin PBXFileReference section */
 		1470D02B2F4DC144DF4D9801 /* Pods-project2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-project2Tests/Pods-project2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		1887FD88223BDFB200AA0282 /* In4ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = In4ComicModel.swift; sourceTree = "<group>"; };
+		18910FF52241026700E913C1 /* IssueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueModel.swift; sourceTree = "<group>"; };
+		1898ED5C2240980E001BA577 /* PageReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageReading.swift; sourceTree = "<group>"; };
+		1898ED5D2240980E001BA577 /* PageReading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageReading.xib; sourceTree = "<group>"; };
+		18C85A70223E48FC00CF45AE /* IssueReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueReading.swift; sourceTree = "<group>"; };
+		18C85A71223E48FC00CF45AE /* IssueReading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueReading.xib; sourceTree = "<group>"; };
+		18E4F116223CF82500604154 /* In4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = In4ViewController.swift; sourceTree = "<group>"; };
+		18E4F117223CF82500604154 /* In4ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = In4ViewController.xib; sourceTree = "<group>"; };
 		326BA78AF83A4EFFF08105CE /* Pods-project2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-project2Tests/Pods-project2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		406302F722369E88002BB8DE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		406302F822369E88002BB8DE /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -121,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				406303062236A650002BB8DE /* HomeComicModel.swift */,
+				1887FD88223BDFB200AA0282 /* In4ComicModel.swift */,
+				18910FF52241026700E913C1 /* IssueModel.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -193,6 +211,9 @@
 		406B4A8C2236990600568555 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1898ED5C2240980E001BA577 /* PageReading.swift */,
+				18C85A70223E48FC00CF45AE /* IssueReading.swift */,
+				18E4F116223CF82500604154 /* In4ViewController.swift */,
 				406B4A602236954600568555 /* HomeViewController.swift */,
 				406B4A9322369AFA00568555 /* SearchViewController.swift */,
 			);
@@ -204,6 +225,9 @@
 			children = (
 				406B4A912236996C00568555 /* HomeView.xib */,
 				406B4A9422369AFA00568555 /* SearchView.xib */,
+				18E4F117223CF82500604154 /* In4ViewController.xib */,
+				18C85A71223E48FC00CF45AE /* IssueReading.xib */,
+				1898ED5D2240980E001BA577 /* PageReading.xib */,
 				406302F722369E88002BB8DE /* HomeTableViewCell.swift */,
 				406302F822369E88002BB8DE /* HomeTableViewCell.xib */,
 				406302FB2236A033002BB8DE /* HomeCollectionViewCell.swift */,
@@ -364,9 +388,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1898ED5F2240980E001BA577 /* PageReading.xib in Resources */,
+				18E4F119223CF82500604154 /* In4ViewController.xib in Resources */,
 				406B4A692236954700568555 /* LaunchScreen.storyboard in Resources */,
 				406302FE2236A033002BB8DE /* HomeCollectionViewCell.xib in Resources */,
 				406B4A662236954700568555 /* Assets.xcassets in Resources */,
+				18C85A73223E48FC00CF45AE /* IssueReading.xib in Resources */,
 				406B4A9622369AFA00568555 /* SearchView.xib in Resources */,
 				406302FA22369E88002BB8DE /* HomeTableViewCell.xib in Resources */,
 				406B4A922236996C00568555 /* HomeView.xib in Resources */,
@@ -415,17 +442,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-project2/Pods-project2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSDropDown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -475,14 +506,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18910FF62241026700E913C1 /* IssueModel.swift in Sources */,
 				406302FD2236A033002BB8DE /* HomeCollectionViewCell.swift in Sources */,
 				406B4A9522369AFA00568555 /* SearchViewController.swift in Sources */,
 				406303012236A2FC002BB8DE /* ComicAPIManager.swift in Sources */,
 				406B4A612236954600568555 /* HomeViewController.swift in Sources */,
 				406303072236A650002BB8DE /* HomeComicModel.swift in Sources */,
 				406303042236A3EC002BB8DE /* Constants.swift in Sources */,
+				1887FD89223BDFB200AA0282 /* In4ComicModel.swift in Sources */,
 				406302F922369E88002BB8DE /* HomeTableViewCell.swift in Sources */,
+				18C85A72223E48FC00CF45AE /* IssueReading.swift in Sources */,
+				18E4F118223CF82500604154 /* In4ViewController.swift in Sources */,
 				406B4A5F2236954600568555 /* AppDelegate.swift in Sources */,
+				1898ED5E2240980E001BA577 /* PageReading.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

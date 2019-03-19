@@ -8,12 +8,15 @@
 
 import UIKit
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -21,17 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabbarController = UITabBarController()
         
-        let homeVC = HomeViewController()
-        homeVC.tabBarItem = UITabBarItem(title: "Home", image: nil, tag: 0)
-        
+        let  navi1 = UINavigationController()
+        navi1.pushViewController(HomeViewController(), animated: true)
+        navi1.tabBarItem = UITabBarItem(title: "Home", image: nil, tag: 0)
+
         let searchVC = SearchViewController()
         searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         
-        tabbarController.viewControllers = [homeVC, searchVC]
-        
         window?.rootViewController = tabbarController
         window?.makeKeyAndVisible()
+        tabbarController.viewControllers = [navi1, searchVC]
         
+        let navi2 = UINavigationController()
+        navi2.pushViewController(In4ViewController(), animated: true)
         
         return true
     }

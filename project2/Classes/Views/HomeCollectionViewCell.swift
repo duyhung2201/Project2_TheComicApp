@@ -22,9 +22,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
                         print(error)
                     }
                 }
-                
                 subTitleLabel.text = data.issueName
-                
                 titleLabel.text = data.title
             }
         }

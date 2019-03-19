@@ -8,8 +8,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-
+class HomeViewController: UIViewController, SelectCellDelegate {
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     var popularComics: [ComicHomeModel] = [ComicHomeModel]()
@@ -51,6 +52,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableCell", for: indexPath) as! HomeTableViewCell
+        cell.delegate = self
         switch(indexPath.row) {
         case 0:
             cell.titleLabel.text = "Popular"
@@ -71,5 +73,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
+    func pushVC(url: String) {
+        let in4VC = In4ViewController()
+        in4VC.urlComic = url
+        self.navigationController?.pushViewController(in4VC, animated: true)
+    }
 }
-

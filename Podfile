@@ -9,6 +9,8 @@ target 'project2' do
   pod 'Kingfisher'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
+  pod 'Alamofire'
+  pod 'iOSDropDown'
 
   target 'project2Tests' do
     inherit! :search_paths
