@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="426" height="50"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r4r-LB-hyn">
-                                <rect key="frame" x="5" y="5" width="213" height="40"/>
+                                <rect key="frame" x="0.0" y="5" width="213" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                             <constraint firstAttribute="bottom" secondItem="r4r-LB-hyn" secondAttribute="bottom" constant="5" id="5bn-Pb-rzT"/>
                             <constraint firstAttribute="height" constant="50" id="LA1-qc-J3O"/>
                             <constraint firstItem="r4r-LB-hyn" firstAttribute="top" secondItem="nHd-ai-Gv3" secondAttribute="top" constant="5" id="Mkx-J0-R2N"/>
-                            <constraint firstItem="r4r-LB-hyn" firstAttribute="leading" secondItem="nHd-ai-Gv3" secondAttribute="leading" constant="5" id="exT-kb-qVX"/>
+                            <constraint firstItem="r4r-LB-hyn" firstAttribute="leading" secondItem="nHd-ai-Gv3" secondAttribute="leading" id="exT-kb-qVX"/>
                         </constraints>
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Pxp-cU-Eqt">
@@ -64,7 +64,7 @@
                 <outlet property="collectionView" destination="Pxp-cU-Eqt" id="Unq-aO-xOo"/>
                 <outlet property="titleLabel" destination="r4r-LB-hyn" id="ClO-Nb-4FT"/>
             </connections>
-            <point key="canvasLocation" x="217.59999999999999" y="337.33133433283359"/>
+            <point key="canvasLocation" x="224" y="325"/>
         </tableViewCell>
     </objects>
 </document>

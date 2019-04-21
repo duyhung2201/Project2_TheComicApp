@@ -14,16 +14,34 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var data: ComicHomeModel? {
+    var homeData: ComicHomeModel? {
         didSet {
-            if let data = data {
+            if let data = homeData {
                 self.imgView.kf.setImage(with: URL(string: data.imgUrl)!, options: [.requestModifier(modifier)]) { (image, error, cache, url) in
                     if let error = error {
                         print(error)
                     }
                 }
                 subTitleLabel.text = data.issueName
+                subTitleLabel.textColor = .white
                 titleLabel.text = data.title
+                titleLabel.numberOfLines = 0
+            }
+        }
+    }
+    
+    var similarData: SimilarComicModel? {
+        didSet {
+            if let data = similarData {
+                self.imgView.kf.setImage(with: URL(string: data.imgUrl)!, options: [.requestModifier(modifier)]) { (image, error, cache, url) in
+                    if let error = error {
+                        print(error)
+                    }
+                }
+                subTitleLabel.text = "Issue # \(data.numIssues)"
+                subTitleLabel.textColor = .white
+                titleLabel.text = data.title
+                titleLabel.numberOfLines = 0
             }
         }
     }
@@ -32,5 +50,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.imgView.layer.cornerRadius = 10
+        self.imgView.layer.masksToBounds = true
+        self.imgView.layer.borderWidth = 0
+    }
 }

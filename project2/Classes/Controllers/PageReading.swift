@@ -14,12 +14,13 @@ class PageReading: UIViewController {
     @IBOutlet weak var imgPage: UIImageView!
     
     var index: Int = 0
+    
     var urlImg: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        indexLb.text = "page \(1 + index)"
+        indexLb.text = "Page \(1 + index)"       
         imgPage.kf.setImage(with: URL(string: urlImg.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!), options: [.requestModifier(modifier)])
-        // Do any additional setup after loading the view.
-    }
 
+    }
+    
 }

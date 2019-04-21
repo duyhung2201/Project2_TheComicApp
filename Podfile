@@ -6,12 +6,13 @@ target 'project2' do
   use_frameworks!
 
   # Pods for project2
-  pod 'Kingfisher'
-  pod 'SwiftyJSON'
-  pod 'RealmSwift'
-  pod 'Alamofire'
-  pod 'iOSDropDown'
-
+ pod 'Kingfisher'
+ pod 'SwiftyJSON'
+ pod 'RealmSwift'
+ pod 'Alamofire'
+ pod 'iOSDropDown'
+ pod 'SnapKit'
+ pod ‘FLAnimatedImage’
   target 'project2Tests' do
     inherit! :search_paths
     # Pods for testing

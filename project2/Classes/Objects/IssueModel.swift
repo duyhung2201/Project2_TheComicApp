@@ -7,13 +7,21 @@
 //
 
 import Foundation
+import RealmSwift
+import SwiftyJSON
 
-class IssueModel {
-    var title: String = ""
+class IssueModel: Object {
+    @objc dynamic var _id: String = ""
+    @objc dynamic var title: String = ""
     var img = [String]()
+    
+    convenience init(json: JSON){
+        self.init()
+        _id = json["_id"].stringValue
+        title = json["title"].stringValue
+        for i in json["img"].arrayValue {
+            img.append(i.stringValue)
+        }
+    }
 }
-//"_id": "5364_1",
-//"title": "Batman The Maxx Arkham Dreams (2018) Issue 1",
-//"img": [
-//"https://readcomicsonline.me/reader/mangas/Batman The Maxx Arkham Dreams/Batman The Maxx Arkham Dreams (2018) Issue 1/cw001.jpg",
-//"https://readcomicsonline.me/reader/mangas/Batman The Maxx Arkham Dreams/Batman The Maxx Arkham Dreams (2018) Issue 1/cw002.jpg",
+

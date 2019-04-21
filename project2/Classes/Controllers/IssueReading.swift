@@ -11,105 +11,85 @@ import Kingfisher
 import SwiftyJSON
 import Alamofire
 
-class IssueReading: UIViewController {
-    var idIssue: String = "1203_20"
-    var pageView = UIPageViewController()
+class IssueReading: UIPageViewController {
     var issueModel = IssueModel()
-    @IBOutlet weak var pageControl: UIPageControl!
-    let HOST_URL = "https://mbcomic-app.herokuapp.com/comics/issue"
+    var pageReading: [PageReading] = [PageReading]()
+    var idIssue: String = ""
+    var pageIndex = 0
     var numPages = 0
+    let loadView = LoadView.instanceFromNib()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        self.tabBarController?.tabBar.isHidden = true
+        loadView.frame = self.view.frame
+        self.view.addSubview(loadView)
         let param = ["id" : idIssue]
-        getData(url: HOST_URL, param: param)
-        pageView.dataSource = self
-        pageView.view.frame = self.view.bounds
-        
-        
-        
-        let initialVC = self.vcAtIndex(index: 0)
-        let viewControllers: [PageReading] = [initialVC]
-
-        pageView.setViewControllers(viewControllers, direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
-        self.view.addSubview(pageView.view)
-        self.view.addSubview(pageControl)
-        self.addChild(pageView)
-        self.pageView.didMove(toParent: self)
+        getData(url: "\(hostUrl)comics/issue", param: param)
+        self.dataSource = self
     }
-
+    
     //MARK: - Networking
     func getData(url: String, param: [String : String]){
         Alamofire.request(url, method: .get, parameters: param).responseJSON { response in
             if response.result.isSuccess {
                 let json = JSON(response.result.value!)
-                self.updateIssue(json: json)
-                
-                DispatchQueue.main.async {
-                    self.pageView.reloadInputViews()
-                }
+                self.issueModel = IssueModel.init(json: json)
+                self.setPageReading()
             }
             else{
                 print(response.result.error!)
             }
         }
     }
-    
-    //MARK: - JSON Parsing
-    func updateIssue(json: JSON) {
-        self.issueModel.title = json["title"].stringValue
+}
+
+extension IssueReading {
+    func setPageReading() {
+        numPages = issueModel.img.count
         
-        numPages = json["img"].count
-        for i in 0...numPages - 1 {
-            self.issueModel.img.append(json["img"][i].stringValue)
+        if numPages == 0 {
+            let lable = UILabel(frame: CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+            lable.text = "No Data"
+            lable.backgroundColor = .white
+            lable.textAlignment = .center
+            self.view.addSubview(lable)
+        }else{
+            for i in 0...numPages - 1{
+                let temp = PageReading()
+                temp.index = i
+                temp.urlImg = issueModel.img[i]
+                self.pageReading.append(temp)
+            }
+            let urls = issueModel.img.map { URL(string: $0.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)! }
+            let prefetcher = ImagePrefetcher(urls: urls) 
+            prefetcher.start()
             
-            print("\(i): \(self.issueModel.img[i])")
+            self.setViewControllers([self.pageReading[0]], direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
         }
-        
-        self.pageControl.numberOfPages = numPages
-    }
-    
-    //MARK: - UpdatePage
-    func vcAtIndex(index: Int) -> PageReading {
-        let pageReading = PageReading()
-        pageReading.index = index
-        pageReading.urlImg = self.issueModel.img[index]
-        self.pageControl.currentPage = index
-        return pageReading
+        self.loadView.removeFromSuperview()
     }
 }
+
+
 
 //MARK: - extension PageVCDataSource
 extension IssueReading: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if let viewController = viewController as? PageReading {
-            var index = viewController.index
-            
-            if index == numPages - 1 {
-//                return self.vcAtIndex(index: 0)
-                return nil
-            }
-            index += 1
-            
-            return self.vcAtIndex(index: index)
+        if self.pageIndex == numPages - 1 {
+            return nil
         }
-        return nil
+        pageIndex += 1
+        return self.pageReading[pageIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if let viewController = viewController as? PageReading {
-            var index = viewController.index
-            if index == 0 {
-//                return self.vcAtIndex(index: numPages - 1)
-                return nil
-            }
-            
-            index += -1
-            
-            return self.vcAtIndex(index: index)
+        if self.pageIndex == 0 {
+            return nil
         }
-        return nil
+        pageIndex -= 1
+        return self.pageReading[pageIndex]
     }
 }
 

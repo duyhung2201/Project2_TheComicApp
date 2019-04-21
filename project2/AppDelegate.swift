@@ -24,19 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabbarController = UITabBarController()
         
-        let  navi1 = UINavigationController()
-        navi1.pushViewController(HomeViewController(), animated: true)
-        navi1.tabBarItem = UITabBarItem(title: "Home", image: nil, tag: 0)
+        let  naviHome = UINavigationController()
+        naviHome.pushViewController(HomeViewController(), animated: true)
+        naviHome.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 0)
 
-        let searchVC = SearchViewController()
-        searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        let naviSearch = UINavigationController()
+        naviSearch.pushViewController(SearchViewController(), animated: true)
+        naviSearch.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         
         window?.rootViewController = tabbarController
         window?.makeKeyAndVisible()
-        tabbarController.viewControllers = [navi1, searchVC]
+        tabbarController.viewControllers = [naviHome, naviSearch]
         
         let navi2 = UINavigationController()
-        navi2.pushViewController(In4ViewController(), animated: true)
+        navi2.pushViewController(InfoVC(), animated: true)
         
         return true
     }

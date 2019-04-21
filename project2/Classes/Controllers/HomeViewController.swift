@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HomeViewController: UIViewController, SelectCellDelegate {
     
@@ -15,16 +16,26 @@ class HomeViewController: UIViewController, SelectCellDelegate {
     
     var popularComics: [ComicHomeModel] = [ComicHomeModel]()
     var newestComics: [ComicHomeModel] = [ComicHomeModel]()
+    var favComics : [ComicHomeModel] = [ComicHomeModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableCell")
-        
+        self.title = "Home"
         getData()
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+        self.getFavData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    
     }
     
     func getData() {
@@ -41,13 +52,22 @@ class HomeViewController: UIViewController, SelectCellDelegate {
             }
         }
     }
-
-
+    
+    func getFavData() {
+        favComics = [ComicHomeModel]()
+        let realm = try!Realm()
+        let favTable = try! realm.objects(FavoriteComicModel.self)
+        
+        for i in favTable{
+            favComics.append(i.convertToHomeData())
+        }
+        
+    }
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
+        return CGFloat(COL_CELL_HEIGHT + 50)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,20 +81,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             cell.titleLabel.text = "Newest"
             cell.data = newestComics
-            
+        case 2:
+            if(favComics.count == 0){
+                cell.titleLabel.text = "Favorite: You haven't had any favorite Comics!"
+            }else{
+                cell.titleLabel.text = "Favorite"
+                cell.data = favComics
+            }
         default:
             break
         }
-        
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     func pushVC(url: String) {
-        let in4VC = In4ViewController()
+        let in4VC = InfoVC()
         in4VC.urlComic = url
         self.navigationController?.pushViewController(in4VC, animated: true)
     }

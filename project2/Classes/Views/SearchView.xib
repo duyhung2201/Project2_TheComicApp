@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="project2" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="jDV-DH-jjc" id="KeE-3x-fHl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="erW-O7-2hs"/>
             </connections>
         </placeholder>
@@ -20,19 +21,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" barStyle="blackTranslucent" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="kuX-nn-Faw">
-                    <rect key="frame" x="0.0" y="20" width="375" height="56"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="56" id="P4M-1i-zdv"/>
-                    </constraints>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jDV-DH-jjc">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kuX-nn-Faw" secondAttribute="trailing" id="HB7-KY-DmG"/>
-                <constraint firstItem="kuX-nn-Faw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="RhR-2J-Qgo"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="kuX-nn-Faw" secondAttribute="top" id="whH-ab-8VK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jDV-DH-jjc" secondAttribute="trailing" id="62B-SR-4ZJ"/>
+                <constraint firstItem="jDV-DH-jjc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IQT-7G-hsU"/>
+                <constraint firstItem="jDV-DH-jjc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="UxH-eK-AHA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="jDV-DH-jjc" secondAttribute="bottom" id="hBO-9b-iWu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

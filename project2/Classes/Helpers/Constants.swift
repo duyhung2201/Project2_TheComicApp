@@ -17,6 +17,7 @@ typealias Completion = (_ succes: Bool, _ data: Any?) -> ()
 // MARK: Appdelegate
 let appdelegate = (UIApplication.shared.delegate as! AppDelegate)
 
+
 // define request
 public let kTimeOut = 10
 
@@ -25,11 +26,14 @@ public let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 public let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 public let OS_VERSION = UIDevice.current.systemVersion
 
+public let COL_CELL_WIDTH = 150.0
+public let COL_CELL_HEIGHT = COL_CELL_WIDTH/200 * 308 + 60
+
 public let hostUrl = "https://mbcomic-app.herokuapp.com/"
 
 public let modifier = AnyModifier { request in
     var r = request
     // replace "Access-Token" with the field name you need, it's just an example
-    r.setValue("https://readcomicsonline.me", forHTTPHeaderField: "referer")
+    r.setValue("https://readcomicsonline.me", forHTTPHeaderField: "comicpunch.net")
     return r
 }
