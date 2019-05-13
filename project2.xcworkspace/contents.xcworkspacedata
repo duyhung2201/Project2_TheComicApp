@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/apple/Documents/Repository/Xcode/Swift/project2.2/project2/Classes/Controllers/LoadView.swift">
-   </FileRef>
-   <FileRef
       location = "group:project2.xcodeproj">
    </FileRef>
    <FileRef

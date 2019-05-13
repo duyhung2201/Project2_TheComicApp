@@ -26,11 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let  naviHome = UINavigationController()
         naviHome.pushViewController(HomeViewController(), animated: true)
-        naviHome.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 0)
+        naviHome.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
 
         let naviSearch = UINavigationController()
         naviSearch.pushViewController(SearchViewController(), animated: true)
-        naviSearch.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        naviSearch.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
+        
+//        let naviList = UINavigationController()
+//        naviList.pushViewController(ListVC(), animated: true)
+//        naviList.tabBarItem = UITabBarItem(title: "List", image: UIImage(named: "ListIcon"), tag: 0)
         
         window?.rootViewController = tabbarController
         window?.makeKeyAndVisible()

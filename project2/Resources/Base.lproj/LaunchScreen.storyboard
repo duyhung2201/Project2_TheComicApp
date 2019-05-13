@@ -18,27 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="6Zo-pD-akN">
-                                <rect key="frame" x="137.5" y="293.5" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="6Zo-pD-akN" secondAttribute="height" multiplier="1:1" id="eR7-A7-4CB"/>
-                                    <constraint firstAttribute="width" constant="100" id="gqN-2F-VOK"/>
-                                </constraints>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qja-vj-MB3">
+                                <rect key="frame" x="178" y="591" width="19" height="20"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cPY-J8-9sM">
-                                <rect key="frame" x="67.5" y="59" width="240" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="cPY-J8-9sM" secondAttribute="height" multiplier="1:1" id="1bc-fJ-Y1b"/>
-                                    <constraint firstAttribute="width" constant="240" id="kal-5w-nF9"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OE6-SV-emd">
+                                <rect key="frame" x="143" y="567" width="89" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo2-178x170.png" translatesAutoresizingMaskIntoConstraints="NO" id="i50-be-Iw2">
+                                <rect key="frame" x="98.5" y="120" width="178" height="170"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Zo-pD-akN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3jq-hb-KVA"/>
-                            <constraint firstItem="cPY-J8-9sM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8T5-XR-ZDU"/>
-                            <constraint firstItem="cPY-J8-9sM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="39" id="Foi-uU-wX9"/>
-                            <constraint firstItem="6Zo-pD-akN" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="rUy-SQ-K5r"/>
+                            <constraint firstItem="qja-vj-MB3" firstAttribute="top" secondItem="OE6-SV-emd" secondAttribute="bottom" id="055-XS-7bF"/>
+                            <constraint firstItem="OE6-SV-emd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FMA-RV-KHJ"/>
+                            <constraint firstItem="qja-vj-MB3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="178" id="Kwx-fD-QPj"/>
+                            <constraint firstItem="i50-be-Iw2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Rwn-N1-a9c"/>
+                            <constraint firstItem="OE6-SV-emd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-100" id="WUU-ph-02V"/>
+                            <constraint firstItem="i50-be-Iw2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="adZ-KY-ak7"/>
+                            <constraint firstItem="OE6-SV-emd" firstAttribute="centerX" secondItem="qja-vj-MB3" secondAttribute="centerX" id="mdj-UT-bKj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -48,4 +49,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo2-178x170.png" width="178" height="170"/>
+    </resources>
 </document>

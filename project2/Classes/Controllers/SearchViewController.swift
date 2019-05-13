@@ -64,19 +64,34 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.title.count
+        if (searchResults.title.count == 0 && isFiltering()) {
+            return 1
+        }
+        else{
+            return searchResults.title.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel!.text = searchResults.title[indexPath.row]
-        return cell
+        if(searchResults.title.count == 0){
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel!.text = "Can't find any Comic"
+            cell.textLabel!.font = UIFont.italicSystemFont(ofSize: 17)
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            cell.textLabel!.text = searchResults.title[indexPath.row]
+            return cell
+        }
     }
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(searchResults.title.count != 0){
             let infoVC = InfoVC()
             infoVC.urlComic = searchResults.url[indexPath.row]
             self.navigationController?.pushViewController(infoVC, animated: true)
         }
+    }
 }
 extension SearchViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate

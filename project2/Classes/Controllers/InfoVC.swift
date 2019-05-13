@@ -56,6 +56,8 @@ class InfoVC: UIViewController {
         similarCol.delegate = self
         similarCol.dataSource = self
         similarCol.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+        
+    
 
 //       print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
@@ -178,7 +180,7 @@ extension InfoVC {
         let fullString = NSMutableAttributedString(string: "\(infoComicModel.year) | ")
         // create our NSTextAttachment
         let image1Attachment = NSTextAttachment()
-        image1Attachment.image = UIImage(named: "tag_icon")
+        image1Attachment.image = UIImage(named: "tag_icon20x20")
         let image1String = NSAttributedString(attachment: image1Attachment)
         fullString.append(image1String)
         fullString.append(NSAttributedString(string: infoComicModel.genre))
@@ -267,9 +269,6 @@ extension InfoVC {
             make.left.equalTo(contentView).offset(5)
             make.top.equalTo(selectLb.snp.bottom).offset(20)
         }
-//        contentView.snp.makeConstraints { make in
-//            make.bottomMargin.equalTo(similarCol.snp.bottom).offset(100)
-//        }
 
         contentView.addSubview(similarCol)
         similarCol.isHidden = true
