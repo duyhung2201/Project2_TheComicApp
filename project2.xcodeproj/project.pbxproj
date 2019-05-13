@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1842156C2289C00D00B17333 /* Logo2-178x170.png in Resources */ = {isa = PBXBuildFile; fileRef = 1842156B2289C00D00B17333 /* Logo2-178x170.png */; };
+		1842156E2289C80A00B17333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1842156D2289C80A00B17333 /* Assets.xcassets */; };
 		186A0A4A225CB4B4007711FA /* SimilarComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A0A49225CB4B4007711FA /* SimilarComicModel.swift */; };
 		186A0A4C225CD52A007711FA /* FavoriteComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186A0A4B225CD52A007711FA /* FavoriteComicModel.swift */; };
 		1887FD89223BDFB200AA0282 /* InfoComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887FD88223BDFB200AA0282 /* InfoComicModel.swift */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		1470D02B2F4DC144DF4D9801 /* Pods-project2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-project2Tests/Pods-project2Tests.release.xcconfig"; sourceTree = "<group>"; };
 		1842156B2289C00D00B17333 /* Logo2-178x170.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo2-178x170.png"; sourceTree = "<group>"; };
+		1842156D2289C80A00B17333 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		186A0A49225CB4B4007711FA /* SimilarComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarComicModel.swift; sourceTree = "<group>"; };
 		186A0A4B225CD52A007711FA /* FavoriteComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteComicModel.swift; sourceTree = "<group>"; };
 		1887FD88223BDFB200AA0282 /* InfoComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoComicModel.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				406B4A6A2236954700568555 /* Info.plist */,
+				1842156D2289C80A00B17333 /* Assets.xcassets */,
 				18B8D22C224870F800E3C886 /* superman.gif */,
 				1842156B2289C00D00B17333 /* Logo2-178x170.png */,
 				406B4A672236954700568555 /* LaunchScreen.storyboard */,
@@ -419,6 +422,7 @@
 				18B8D22D224870F900E3C886 /* superman.gif in Resources */,
 				18B20D63226C964900A38B1E /* ListVC.xib in Resources */,
 				406302FA22369E88002BB8DE /* HomeTableViewCell.xib in Resources */,
+				1842156E2289C80A00B17333 /* Assets.xcassets in Resources */,
 				406B4A922236996C00568555 /* HomeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
