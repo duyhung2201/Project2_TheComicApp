@@ -12,7 +12,7 @@ target 'project2' do
  pod 'Alamofire'
  pod 'iOSDropDown'
  pod 'SnapKit'
- pod ‘FLAnimatedImage’
+ pod 'IQKeyboardManagerSwift'
   target 'project2Tests' do
     inherit! :search_paths
     # Pods for testing

@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.8.1)
-  - FLAnimatedImage (1.0.12)
   - iOSDropDown (0.2.7)
+  - IQKeyboardManagerSwift (6.3.0)
   - Kingfisher (5.2.0)
   - Realm (3.7.6):
     - Realm/Headers (= 3.7.6)
