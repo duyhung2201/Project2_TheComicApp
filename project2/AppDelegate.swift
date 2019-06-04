@@ -7,42 +7,38 @@
 //
 
 import UIKit
-
-
+import IQKeyboardManagerSwift
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        IQKeyboardManager.shared.enable = true
+        
+      
+        
+//        let tabbarVC = UITabBarController()
+//        let  naviHome = UINavigationController()
+//        naviHome.pushViewController(HomeViewController(), animated: true)
+//        naviHome.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
+//
+//        let naviSearch = UINavigationController()
+//        naviSearch.pushViewController(SearchViewController(), animated: true)
+//        naviSearch.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
+//
+//        tabbarVC.viewControllers = [naviHome, naviSearch]
+        
+        let naviFromLogin = UINavigationController(rootViewController: LoginViewController())
+        
         window = UIWindow()
-        
-        let tabbarController = UITabBarController()
-        
-        let  naviHome = UINavigationController()
-        naviHome.pushViewController(HomeViewController(), animated: true)
-        naviHome.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
-
-        let naviSearch = UINavigationController()
-        naviSearch.pushViewController(SearchViewController(), animated: true)
-        naviSearch.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
-        
-//        let naviList = UINavigationController()
-//        naviList.pushViewController(ListVC(), animated: true)
-//        naviList.tabBarItem = UITabBarItem(title: "List", image: UIImage(named: "ListIcon"), tag: 0)
-        
-        window?.rootViewController = tabbarController
+        window?.backgroundColor = .white
+        window?.rootViewController = naviFromLogin
         window?.makeKeyAndVisible()
-        tabbarController.viewControllers = [naviHome, naviSearch]
-        
-        let navi2 = UINavigationController()
-        navi2.pushViewController(InfoVC(), animated: true)
-        
         return true
     }
 
@@ -71,3 +67,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//MARK: - Collect realm
+extension AppDelegate {
+    /// set up realm
+    func realmConfiguration() {
+        let config = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: 1,
+            
+            // Set the block which will be called automatically when opening a Realm with
+            // a schema version lower than the one set above
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if (oldSchemaVersion < 1) {
+                    // Nothing to do!
+                    // Realm will automatically detect new properties and removed properties
+                    // And will update the schema on disk automatically
+                }
+        })
+        
+        // Tell Realm to use this new configuration object for the default Realm
+        Realm.Configuration.defaultConfiguration = config
+        
+        // Now that we've told Realm how to handle the schema change, opening the file
+        // will automatically perform the migration
+        let realm = try! Realm()
+    }
+    
+}

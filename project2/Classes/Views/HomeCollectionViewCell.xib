@@ -13,14 +13,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeCollectionViewCell" customModule="project2" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeCollectionViewCell" customModule="project2" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="224" height="409"/>
+            <rect key="frame" x="0.0" y="0.0" width="224" height="484"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="224" height="409"/>
+                <rect key="frame" x="0.0" y="0.0" width="224" height="484"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Klq-3l-yNa" userLabel="Content View">
-                        <rect key="frame" x="0.0" y="0.0" width="224" height="409"/>
+                        <rect key="frame" x="0.0" y="20" width="224" height="464"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="05x-QW-bgG">
                                 <rect key="frame" x="0.0" y="0.0" width="224" height="345"/>
@@ -38,22 +38,61 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFA-No-d5h" userLabel="Title">
-                                <rect key="frame" x="0.0" y="345" width="224" height="64"/>
+                                <rect key="frame" x="0.0" y="370" width="224" height="94"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="WFP-9x-cjh" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="0.0" y="350" width="224" height="20"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="a8g-pN-5zJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="2.6000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
+                                        <real key="value" value="-1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="h2C-OI-3kK" firstAttribute="leading" secondItem="05x-QW-bgG" secondAttribute="leading" id="9ow-an-mGK"/>
                             <constraint firstItem="h2C-OI-3kK" firstAttribute="bottom" secondItem="05x-QW-bgG" secondAttribute="bottom" id="N0v-Mk-4xO"/>
                             <constraint firstAttribute="trailing" secondItem="xFA-No-d5h" secondAttribute="trailing" id="NWG-Vf-liQ"/>
+                            <constraint firstItem="WFP-9x-cjh" firstAttribute="top" secondItem="05x-QW-bgG" secondAttribute="bottom" constant="5" id="PQM-ks-S69"/>
                             <constraint firstItem="xFA-No-d5h" firstAttribute="leading" secondItem="Klq-3l-yNa" secondAttribute="leading" id="PfF-Kp-Hit"/>
+                            <constraint firstAttribute="trailing" secondItem="WFP-9x-cjh" secondAttribute="trailing" id="Vv1-Cc-sdI"/>
                             <constraint firstItem="h2C-OI-3kK" firstAttribute="trailing" secondItem="05x-QW-bgG" secondAttribute="trailing" id="aP8-V0-IhS"/>
                             <constraint firstAttribute="trailing" secondItem="05x-QW-bgG" secondAttribute="trailing" id="asj-Dy-Lc6"/>
-                            <constraint firstItem="xFA-No-d5h" firstAttribute="top" secondItem="05x-QW-bgG" secondAttribute="bottom" id="ho0-Hk-9lZ"/>
+                            <constraint firstItem="WFP-9x-cjh" firstAttribute="leading" secondItem="Klq-3l-yNa" secondAttribute="leading" id="iBy-e6-8mz"/>
                             <constraint firstItem="05x-QW-bgG" firstAttribute="leading" secondItem="Klq-3l-yNa" secondAttribute="leading" id="lPD-bA-5G4"/>
+                            <constraint firstItem="xFA-No-d5h" firstAttribute="top" secondItem="WFP-9x-cjh" secondAttribute="bottom" id="rdY-Cu-LqA"/>
                             <constraint firstAttribute="bottom" secondItem="xFA-No-d5h" secondAttribute="bottom" id="tsO-Ye-j7G"/>
                             <constraint firstItem="05x-QW-bgG" firstAttribute="top" secondItem="Klq-3l-yNa" secondAttribute="top" id="zJY-0d-YbC"/>
                         </constraints>
@@ -67,13 +106,13 @@
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="Klq-3l-yNa" secondAttribute="leading" id="Xd3-XE-DPj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="224" height="409"/>
+            <size key="customSize" width="224" height="484"/>
             <connections>
                 <outlet property="imgView" destination="05x-QW-bgG" id="4ej-Nx-jkq"/>
                 <outlet property="subTitleLabel" destination="h2C-OI-3kK" id="r5y-GE-2SH"/>
                 <outlet property="titleLabel" destination="xFA-No-d5h" id="Vq9-rP-LEW"/>
             </connections>
-            <point key="canvasLocation" x="-464" y="-121.88905547226388"/>
+            <point key="canvasLocation" x="-464" y="-88.15592203898052"/>
         </collectionViewCell>
     </objects>
 </document>

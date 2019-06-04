@@ -6,25 +6,60 @@
 //
 
 import UIKit
-import FLAnimatedImage
+import SnapKit
 
 class LoadView: UIView {
-    @IBOutlet weak var gifImg: FLAnimatedImageView!
+//    @IBOutlet weak var gifImg: FLAnimatedImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        updateGif()
+    lazy var gif : UIImageView = {
+        
+        let gif = UIImageView(image: UIImage.gifImageWithName("superman"))
+        gif.frame = UIScreen.main.bounds
+
+        gif.backgroundColor = .blue
+        
+        return gif
+    }()
+    
+    lazy var loadingLbl : UILabel = {
+        let loadingLbl = UILabel()
+        loadingLbl.text = "Loading..."
+        loadingLbl.textAlignment = .center
+        loadingLbl.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        return loadingLbl
+    }()
+    
+    lazy var loadIcon : UIActivityIndicatorView = {
+        let loadIcon = UIActivityIndicatorView()
+        loadIcon.style = .gray
+        loadIcon.backgroundColor = .red
+        
+        return loadIcon
+    }()
+    
+    convenience init() {
+        self.init(frame: UIScreen.main.bounds)
+        self.addSubview(gif)
+        self.addSubview(loadingLbl)
+        self.addSubview(loadIcon)
+        setLoadingLbl()
+        setLoadIcon()
     }
     
-    class func instanceFromNib() -> UIView {
-        return UINib(nibName: "LoadView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    func setLoadingLbl() {
+        self.loadingLbl.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.top.equalTo(self.snp.bottom).offset(-80)
+        }
     }
     
-    func updateGif() {
-        let path1 : String = Bundle.main.path(forResource: "superman", ofType: "gif")!
-        let url = URL(fileURLWithPath: path1)
-        let gifData = try? Data(contentsOf: url)
-        let imageData1 = FLAnimatedImage(animatedGIFData: gifData)
-        gifImg.animatedImage = imageData1
+    func setLoadIcon() {
+        self.loadIcon.snp.makeConstraints { (make) in
+            make.top.equalTo(loadingLbl).offset(10)
+            make.centerX.equalTo(self)
+            make.width.height.equalTo(20)
+        }
     }
+
 }

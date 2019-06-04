@@ -13,14 +13,5 @@ target 'project2' do
  pod 'iOSDropDown'
  pod 'SnapKit'
  pod 'IQKeyboardManagerSwift'
-  target 'project2Tests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'project2UITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+ pod 'Cosmos'
 end

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.1)
+  - Cosmos (19.0.3)
   - iOSDropDown (0.2.7)
   - IQKeyboardManagerSwift (6.3.0)
   - Kingfisher (5.2.0)
@@ -13,8 +14,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - FLAnimatedImage
+  - Cosmos
   - iOSDropDown
+  - IQKeyboardManagerSwift
   - Kingfisher
   - RealmSwift
   - SnapKit
@@ -23,8 +25,9 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - FLAnimatedImage
+    - Cosmos
     - iOSDropDown
+    - IQKeyboardManagerSwift
     - Kingfisher
     - Realm
     - RealmSwift
@@ -33,14 +36,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
-  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   iOSDropDown: 7a4cfc67d5166f319858747b63cd2f7760c4fb4b
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
   RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: a78deb52e49be7326e31053dacee42d5a0538310
+PODFILE CHECKSUM: 2b824edd52e8a32c4036e844f3f2d8ff142fc1a0
 
 COCOAPODS: 1.5.3

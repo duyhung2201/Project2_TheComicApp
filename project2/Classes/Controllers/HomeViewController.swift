@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class HomeViewController: UIViewController, SelectCellDelegate {
+class HomeViewController: UIViewController{
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -24,13 +24,14 @@ class HomeViewController: UIViewController, SelectCellDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeTableCell")
-        self.title = "Home"
+//        self.title = "Home"
         getData()
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.navigationController?.isNavigationBarHidden = false
         self.getFavData()
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -56,7 +57,7 @@ class HomeViewController: UIViewController, SelectCellDelegate {
     func getFavData() {
         favComics = [ComicHomeModel]()
         let realm = try!Realm()
-        let favTable = try! realm.objects(FavoriteComicModel.self)
+        let favTable = realm.objects(FavoriteComicModel.self)
         
         for i in favTable{
             favComics.append(i.convertToHomeData())
@@ -65,9 +66,9 @@ class HomeViewController: UIViewController, SelectCellDelegate {
     }
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource, SelectCellDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(COL_CELL_HEIGHT + 50)
+        return CGFloat(COL_CELL_HEIGHT + 60)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,9 +99,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
+    
     func pushVC(url: String) {
-        let in4VC = InfoVC()
+        let in4VC = InfoViewController()
         in4VC.urlComic = url
-        self.navigationController?.pushViewController(in4VC, animated: true)
+        self.tabBarController?.navigationController?.pushViewController(in4VC, animated: true)
+ 
     }
 }

@@ -13,17 +13,17 @@ import Alamofire
 
 class IssueReading: UIPageViewController {
     var issueModel = IssueModel()
-    var pageReading: [PageReading] = [PageReading]()
+    var pageReading: [PageReadingViewController] = [PageReadingViewController]()
     var idIssue: String = ""
     var pageIndex = 0
     var numPages = 0
-    let loadView = LoadView.instanceFromNib()
+    let loadView = sharedLoadView
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.isHidden = true
-        loadView.frame = self.view.frame
+        loadView.frame = UIScreen.main.bounds
         self.view.addSubview(loadView)
         let param = ["id" : idIssue]
         getData(url: "\(hostUrl)comics/issue", param: param)
@@ -57,7 +57,7 @@ extension IssueReading {
             self.view.addSubview(lable)
         }else{
             for i in 0...numPages - 1{
-                let temp = PageReading()
+                let temp = PageReadingViewController()
                 temp.index = i
                 temp.urlImg = issueModel.img[i]
                 self.pageReading.append(temp)
@@ -65,7 +65,6 @@ extension IssueReading {
             let urls = issueModel.img.map { URL(string: $0.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)! }
             let prefetcher = ImagePrefetcher(urls: urls) 
             prefetcher.start()
-            
             self.setViewControllers([self.pageReading[0]], direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
         }
         self.loadView.removeFromSuperview()

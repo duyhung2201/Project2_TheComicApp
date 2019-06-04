@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qja-vj-MB3">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qja-vj-MB3">
                                 <rect key="frame" x="178" y="591" width="19" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OE6-SV-emd">
@@ -28,7 +28,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo2-178x170.png" translatesAutoresizingMaskIntoConstraints="NO" id="i50-be-Iw2">
-                                <rect key="frame" x="98.5" y="120" width="178" height="170"/>
+                                <rect key="frame" x="94" y="100" width="187.5" height="187.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i50-be-Iw2" secondAttribute="height" id="eE4-vd-1fM"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -36,10 +39,11 @@
                             <constraint firstItem="qja-vj-MB3" firstAttribute="top" secondItem="OE6-SV-emd" secondAttribute="bottom" id="055-XS-7bF"/>
                             <constraint firstItem="OE6-SV-emd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FMA-RV-KHJ"/>
                             <constraint firstItem="qja-vj-MB3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="178" id="Kwx-fD-QPj"/>
+                            <constraint firstItem="i50-be-Iw2" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.5" id="Ltc-LL-EXb"/>
                             <constraint firstItem="i50-be-Iw2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Rwn-N1-a9c"/>
                             <constraint firstItem="OE6-SV-emd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-100" id="WUU-ph-02V"/>
-                            <constraint firstItem="i50-be-Iw2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="adZ-KY-ak7"/>
                             <constraint firstItem="OE6-SV-emd" firstAttribute="centerX" secondItem="qja-vj-MB3" secondAttribute="centerX" id="mdj-UT-bKj"/>
+                            <constraint firstItem="i50-be-Iw2" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="100" id="rJj-z8-EFy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

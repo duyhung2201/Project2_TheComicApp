@@ -33,6 +33,7 @@ class SearchViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.navigationController?.isNavigationBarHidden = true
     }
     
     //MARK: - Networking
@@ -87,7 +88,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(searchResults.title.count != 0){
-            let infoVC = InfoVC()
+            let infoVC = InfoViewController()
             infoVC.urlComic = searchResults.url[indexPath.row]
             self.navigationController?.pushViewController(infoVC, animated: true)
         }

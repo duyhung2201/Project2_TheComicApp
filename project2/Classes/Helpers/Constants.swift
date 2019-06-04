@@ -10,6 +10,15 @@ import Foundation
 import UIKit
 import Kingfisher
 
+enum HTTPMethods : String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
+}
+
+let sharedLoadView : LoadView = LoadView()
+
 typealias CompletionDict = (_ succes: Bool, _ data: [String : Any]?) -> ()
 
 typealias Completion = (_ succes: Bool, _ data: Any?) -> ()
