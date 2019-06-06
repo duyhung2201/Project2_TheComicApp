@@ -6,7 +6,7 @@
 //  Copyright © 2019 HoaPQ. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 import SwiftyJSON
 

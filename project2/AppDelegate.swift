@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.backgroundColor = .white
-        window?.rootViewController = naviFromLogin
+        window?.rootViewController = HomeViewController2()
         window?.makeKeyAndVisible()
         return true
     }

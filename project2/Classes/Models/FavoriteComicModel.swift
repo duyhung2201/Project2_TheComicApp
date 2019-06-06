@@ -24,8 +24,8 @@ class FavoriteComicModel: Object {
         numIssues = infoComicModel.number_issues
     }
     
-    func convertToHomeData() -> ComicHomeModel{
-        let homeData = ComicHomeModel();
+    func convertToHomeData() -> HomeModel{
+        let homeData = HomeModel();
         homeData.imgUrl = self.imgUrl
         homeData.title = self.title
         homeData.issueName = "Issue # \(self.numIssues)"

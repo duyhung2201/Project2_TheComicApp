@@ -14,9 +14,9 @@ class HomeViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     
-    var popularComics: [ComicHomeModel] = [ComicHomeModel]()
-    var newestComics: [ComicHomeModel] = [ComicHomeModel]()
-    var favComics : [ComicHomeModel] = [ComicHomeModel]()
+    var popularComics: [HomeModel] = [HomeModel]()
+    var newestComics: [HomeModel] = [HomeModel]()
+    var favComics : [HomeModel] = [HomeModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +43,8 @@ class HomeViewController: UIViewController{
         ComicApiManage.shared.getHomeComics { (status, data) in
             if status {
                 if let data = data {
-                    self.popularComics = data["popular"] as! [ComicHomeModel]
-                    self.newestComics = data["newest"] as! [ComicHomeModel]
+                    self.popularComics = data["popular"] as! [HomeModel]
+                    self.newestComics = data["newest"] as! [HomeModel]
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -55,7 +55,7 @@ class HomeViewController: UIViewController{
     }
     
     func getFavData() {
-        favComics = [ComicHomeModel]()
+        favComics = [HomeModel]()
         let realm = try!Realm()
         let favTable = realm.objects(FavoriteComicModel.self)
         

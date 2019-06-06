@@ -12,7 +12,7 @@ import RealmSwift
 import Cosmos
 
 class LoginViewController: UIViewController {
-    let realm = try! Realm()
+//    let realm = try! Realm()
     let placeholderAtts = [
         NSAttributedString.Key.foregroundColor: UIColor.gray,
         NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 17)
@@ -91,21 +91,26 @@ class LoginViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        setRealm(username: "Project2")
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
+        setRealm(username: "Project2.1")
         initLayout()
         
+//        let frame = CGRect(x: 5, y: 100, width: self.view.frame.width - 10, height: 150)
+//        let imgComicView = ImgComicView(imgUrl: "https://comicpunch.net/pics3/seaoflove03.jpg", title: "Fantastic Four (2018)", issue_name: "issue # 100", rating_star: 0, ratingCount: 0, frame: frame)
+//
+//        self.view.addSubview(imgComicView)
+
     }
     
     func setRealm(username: String) {
         var config = Realm.Configuration()
-        
+
         // Use the default directory, but replace the filename with the username
         config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(username).realm")
-        
+
         // Set this as the configuration used for the default Realm
         Realm.Configuration.defaultConfiguration = config
+//
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     func initLayout() {
@@ -190,6 +195,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func tapSignin() {
+        let realm = try! Realm()
 //        let tabbarVC = UITabBarController()
 //        let homeVC = HomeViewController()
 //        homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
@@ -208,23 +214,29 @@ class LoginViewController: UIViewController {
 
             let userDb = realm.objects(User.self).filter("id = '\(idTxf.text!)'")
             if(userDb.count > 0){
-                if(passwordTxf.text! == userDb.first?.password) {
-
-                    let tabbarVC = UITabBarController()
-                    let homeVC = HomeViewController()
-                    homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
-
-                    let naviSearchVC = UINavigationController(rootViewController: SearchViewController())
-                    naviSearchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
-
-                    tabbarVC.viewControllers = [homeVC, naviSearchVC]
-                    tabbarVC.title = "Home"
-
-                    self.navigationController?.pushViewController(tabbarVC, animated: true)
-                }else {
-                    passwordTxf.text = ""
-                    passwordTxf.attributedPlaceholder = NSAttributedString(string: "Password is wrong", attributes: placeholderAtts)
+                print("count > 0")
+                try! realm.write {
+                    let user = userDb.first!
+                    user.pushComment(id_comic: 5365, comment: "this comic is very exciting")
                 }
+                
+//                if(passwordTxf.text! == userDb.first?.password) {
+//
+//                    let tabbarVC = UITabBarController()
+//                    let homeVC = HomeViewController()
+//                    homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
+//
+//                    let naviSearchVC = UINavigationController(rootViewController: SearchViewController())
+//                    naviSearchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
+//
+//                    tabbarVC.viewControllers = [homeVC, naviSearchVC]
+//                    tabbarVC.title = "Home"
+//
+//                    self.navigationController?.pushViewController(tabbarVC, animated: true)
+//                }else {
+//                    passwordTxf.text = ""
+//                    passwordTxf.attributedPlaceholder = NSAttributedString(string: "Password is wrong", attributes: placeholderAtts)
+//                }
             }else {
                 idTxf.text = ""
                 passwordTxf.text = ""

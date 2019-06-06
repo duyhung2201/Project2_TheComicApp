@@ -14,7 +14,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var homeData: ComicHomeModel? {
+    var homeData: HomeModel? {
         didSet {
             if let data = homeData {
                 self.imgView.kf.setImage(with: URL(string: data.imgUrl)!, options: [.requestModifier(modifier)]) { (image, error, cache, url) in

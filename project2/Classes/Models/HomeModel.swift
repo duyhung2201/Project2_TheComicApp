@@ -10,21 +10,22 @@ import Foundation
 import RealmSwift
 import SwiftyJSON
 
-class ComicHomeModel: Object {
+class HomeModel: Object {
     
-//    {
-//    "img" : "https:\/\/readcomicsonline.me\/pics2\/xpqx001.jpg",
-//    "title" : "Spawn",
-//    "issue_name" : "Issue # 294",
-//    "url" : "\/spawn",
-//    "issue_url" : "https:\/\/readcomicsonline.me\/reader\/Spawn\/Spawn_Issue_294"
-//    },
+//    title": "Bloodshot: Rising Spirit",
+//    "url": "/bloodshot-rising-spirit",
+//    "img": "https://comicpunch.net/pics4/shynar04.jpg",
+//    "issue_url": "https://comicpunch.net/reader/Bloodshot-Rising-Spirit/Bloodshot-Rising-Spirit-(2018)-Issue-7",
+//    "issue_name": "Issue # 7",
+//    "id": 5465
+//},
     
     @objc dynamic var imgUrl: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var issueName: String = ""
     @objc dynamic var url: String = ""
     @objc dynamic var issueUrl: String = ""
+    @objc dynamic var id :Int = 0
     
     convenience init(json: JSON) {
         self.init()
@@ -33,6 +34,7 @@ class ComicHomeModel: Object {
         issueName = json["issue_name"].stringValue
         url = json["url"].stringValue
         issueUrl = json["issue_url"].stringValue
+        id = json["id"].intValue
     }
     
 }

@@ -25,7 +25,7 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
-    var data: [ComicHomeModel] = [ComicHomeModel]() {
+    var data: [HomeModel] = [HomeModel]() {
         didSet {
             collectionView.reloadData()
         }

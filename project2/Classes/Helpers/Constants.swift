@@ -35,8 +35,8 @@ public let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 public let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 public let OS_VERSION = UIDevice.current.systemVersion
 
-public let COL_CELL_WIDTH = 150.0
-public let COL_CELL_HEIGHT = COL_CELL_WIDTH/200 * 308 + 60
+public let COL_CELL_WIDTH = 140
+public let COL_CELL_HEIGHT = 180
 
 public let hostUrl = "https://mbcomic-app.herokuapp.com/"
 

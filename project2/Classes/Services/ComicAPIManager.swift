@@ -13,6 +13,38 @@ import Alamofire
 class ComicApiManage: NSObject {
     static let shared : ComicApiManage = ComicApiManage()
     
+    func getComicById(id_comic: Int, completion: @escaping Completion) {
+        let request = NSMutableURLRequest(url: URL(string: "\(hostUrl)comics?id=\(id_comic)")!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        
+        request.httpMethod = HTTPMethod.get.rawValue
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if let responseHTTP = response as? HTTPURLResponse {
+                if responseHTTP.statusCode == 200 || responseHTTP.statusCode == 201 {
+                    if (error != nil) {
+                        DispatchQueue.main.async {
+                            completion(false , nil)
+                        }
+                    } else {
+                        let json = JSON(data!)
+                        let data = InfoComicModel2(json: json)
+                        
+                        DispatchQueue.main.async {
+                            completion(true, data)
+                        }
+                        
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion(false , nil)
+                    }
+                }
+            }
+        }
+        
+        dataTask.resume() 
+    }
+    
     //MARK: - Spin Code
     func getHomeComics(completion : @escaping CompletionDict) {
         
@@ -28,18 +60,18 @@ class ComicApiManage: NSObject {
                         completion(false , nil)
                     } else {
                         let json = JSON(data!)
-                        var data = [String: [ComicHomeModel]]()
+                        var data = [String: [HomeModel]]()
                         
-                        data["popular"] = [ComicHomeModel]()
-                        data["newest"] = [ComicHomeModel]()
+                        data["popular"] = [HomeModel]()
+                        data["newest"] = [HomeModel]()
                         
                         for item in json["popular"].arrayValue {
-                            let i = ComicHomeModel(json: item)
+                            let i = HomeModel(json: item)
                             data["popular"]?.append(i)
                         }
                         
                         for item in json["newest"].arrayValue {
-                            let i = ComicHomeModel(json: item)
+                            let i = HomeModel(json: item)
                             data["newest"]?.append(i)
                         }
                         completion(true, data)
