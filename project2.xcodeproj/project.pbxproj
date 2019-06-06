@@ -45,9 +45,9 @@
 		18CC108722A8F402006F58F0 /* AllComicTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC108622A8F402006F58F0 /* AllComicTBViewCell.swift */; };
 		18E4F118223CF82500604154 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4F116223CF82500604154 /* InfoViewController.swift */; };
 		18E4F119223CF82500604154 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E4F117223CF82500604154 /* InfoView.xib */; };
-		18EC39E72247A06300E83E36 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC39E62247A06300E83E36 /* LoadView.swift */; };
 		18EC39E92247A13B00E83E36 /* LoadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EC39E82247A13B00E83E36 /* LoadView.xib */; };
 		3D8E3B41A574F250B02CB6D7 /* Pods_project2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5311B910552FBE623C64B8 /* Pods_project2.framework */; };
+		40021C4722A8F9E300796BC1 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40021C4622A8F9E300796BC1 /* LoadView.swift */; };
 		406302F922369E88002BB8DE /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406302F722369E88002BB8DE /* HomeTableViewCell.swift */; };
 		406302FA22369E88002BB8DE /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 406302F822369E88002BB8DE /* HomeTableViewCell.xib */; };
 		406302FD2236A033002BB8DE /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406302FB2236A033002BB8DE /* HomeCollectionViewCell.swift */; };
@@ -103,9 +103,9 @@
 		18CC108622A8F402006F58F0 /* AllComicTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllComicTBViewCell.swift; sourceTree = "<group>"; };
 		18E4F116223CF82500604154 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		18E4F117223CF82500604154 /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
-		18EC39E62247A06300E83E36 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadView.swift; path = /Users/apple/Documents/Repository/Xcode/Swift/IOS_TheComicApp/project2.2/project2/Classes/Controllers/LoadView.swift; sourceTree = "<absolute>"; };
 		18EC39E82247A13B00E83E36 /* LoadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadView.xib; sourceTree = "<group>"; };
 		326BA78AF83A4EFFF08105CE /* Pods-project2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-project2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-project2Tests/Pods-project2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		40021C4622A8F9E300796BC1 /* LoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadView.swift; sourceTree = "<group>"; };
 		406302F722369E88002BB8DE /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		406302F822369E88002BB8DE /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		406302FB2236A033002BB8DE /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -231,6 +231,7 @@
 		406B4A8C2236990600568555 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				40021C4622A8F9E300796BC1 /* LoadView.swift */,
 				18B20D60226C964900A38B1E /* ListVC.swift */,
 				18B727FA229B9D48006A8B19 /* LoginViewController.swift */,
 				18B72804229C4156006A8B19 /* SignupViewController.swift */,
@@ -471,6 +472,7 @@
 				18E4F118223CF82500604154 /* InfoViewController.swift in Sources */,
 				18B164A122A82BAE0029683B /* HomeCLViewCell3.swift in Sources */,
 				18B20D62226C964900A38B1E /* ListVC.swift in Sources */,
+				40021C4722A8F9E300796BC1 /* LoadView.swift in Sources */,
 				18B1649022A78D340029683B /* ComicModel.swift in Sources */,
 				18B72803229C3163006A8B19 /* Gif-Swift.swift in Sources */,
 				18B1648822A767C10029683B /* BaseTBCell.swift in Sources */,

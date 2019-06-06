@@ -19,9 +19,23 @@ class ImgComicView: UIView {
     var _ratingCount = 0
     var favoriteState = false
     
-    lazy var img : UIImageView = {
+    var data: HomeModel? {
+        didSet {
+            guard let data = data else {
+                return
+            }
+            let rating = RealmManager.shared.getComicRating(id_comic: data.id)
+            self._title = data.title
+            self._issue_name = data.issueName
+            self._rating_star = rating["rating_star"]!
+            self._ratingCount = Int(rating["count"]!)
+            
+            updateData()
+        }
+    }
+    
+    var img : UIImageView = {
         let img = UIImageView()
-        img.kf.setImage(with: URL(string: imgUrl), options: [.requestModifier(modifier)])
         img.layer.masksToBounds = true
         img.layer.cornerRadius = 10
         img.contentMode = .scaleAspectFit
@@ -29,33 +43,30 @@ class ImgComicView: UIView {
         return img
     }()
     
-    lazy var title : UILabel = {
+    var title : UILabel = {
         let title = UILabel()
-        title.text = _title
         title.font = UIFont.boldSystemFont(ofSize: 20)
         
         return title
     }()
     
-    lazy var issue_name : UILabel = {
+    var issue_name : UILabel = {
         let issue_name = UILabel()
-        issue_name.text = "𝐍𝐞𝐰𝐞𝐬𝐭 𝐜𝐡𝐚𝐩𝐭𝐞𝐫: \(_issue_name)"
         issue_name.font = UIFont.systemFont(ofSize: 13)
         issue_name.textColor = .lightGray
         
         return issue_name
     }()
     
-    lazy var ratingPoint : UILabel = {
+    var ratingPoint : UILabel = {
        let ratingPoint = UILabel()
-        ratingPoint.text = "\(_rating_star)"
         ratingPoint.textColor = .gray
         ratingPoint.font = UIFont.systemFont(ofSize: 20)
         
         return ratingPoint
     }()
     
-    lazy var rating: CosmosView = {
+    var rating: CosmosView = {
         var options = CosmosSettings()
         options.updateOnTouch = false
         options.starSize = 20
@@ -66,24 +77,14 @@ class ImgComicView: UIView {
         options.filledBorderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         
         let rating = CosmosView(settings: options)
-        rating.rating = _rating_star
 
         return rating
     }()
     
-    lazy var ratingCount: UILabel = {
+    var ratingCount: UILabel = {
         let ratingCount = UILabel()
         ratingCount.font = UIFont.systemFont(ofSize: 10)
         ratingCount.textColor = .lightGray
-        
-        switch _ratingCount {
-        case 0:
-            ratingCount.text = "Not Enough Ratings"
-        case 1:
-            ratingCount.text = "1 Rating"
-        default:
-            ratingCount.text = "\(_ratingCount) Ratings"
-        }
         
         return ratingCount
     }()
@@ -105,12 +106,13 @@ class ImgComicView: UIView {
        return favoriteBtn
     }()
     
-    convenience init(imgUrl: String, title: String, issue_name: String,
-                     id_comic: Int) {
-        self.init()
-        let rating = RealmManager.shared.getComicRating(id_comic: id_comic)
-        initData(imgUrl: imgUrl, title: title, issue_name: issue_name, rating_star: rating["rating_star"]!, ratingCount: Int(rating["count"]!))
-        initLayout()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.initLayout()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func initData(imgUrl: String, title: String, issue_name: String,
@@ -189,6 +191,12 @@ class ImgComicView: UIView {
             make.width.equalTo(80)
             make.height.equalTo(30)
         }
+        
+        if (favoriteState) {
+            favoriteBtn.textColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        } else {
+            favoriteBtn.textColor = .black
+        }
     }
     
     func setRatingLayout() {
@@ -213,6 +221,7 @@ class ImgComicView: UIView {
     }
     
     @objc func tapFavorite() {
+        print("tap favorite")
         if favoriteState {
             favoriteState = false
             favoriteBtn.textColor = .black
@@ -224,6 +233,22 @@ class ImgComicView: UIView {
         
     }
     
-    
+    func updateData() {
+        img.kf.setImage(with: URL(string: imgUrl), options: [.requestModifier(modifier)])
+        title.text = _title
+        issue_name.text = "𝐍𝐞𝐰𝐞𝐬𝐭 𝐜𝐡𝐚𝐩𝐭𝐞𝐫: \(_issue_name)"
+        ratingPoint.text = "\(_rating_star)"
+        rating.rating = _rating_star
+        switch _ratingCount {
+        case 0:
+            ratingCount.text = "Not Enough Ratings"
+        case 1:
+            ratingCount.text = "1 Rating"
+        default:
+            ratingCount.text = "\(_ratingCount) Ratings"
+        }
+        
+//        setNeedsLayout()
+    }
         
 }
