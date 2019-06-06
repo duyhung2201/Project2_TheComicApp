@@ -91,3 +91,17 @@ extension HomeViewController2 : UITableViewDelegate , UITableViewDataSource {
     }
    
 }
+
+extension HomeViewController2: BaseTBViewCellDelegate {
+    func pushVCToComic(id_comic: Int) {
+        print("pushToComic")
+    }
+    
+    func pushVCToAllComic(title: String, data: [HomeModel]) {
+        let vc = AllComicViewController()
+        vc.data = data
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+}

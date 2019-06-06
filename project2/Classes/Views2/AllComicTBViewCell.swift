@@ -8,12 +8,17 @@
 
 import UIKit
 
-class AllCateTBViewCell: BaseTBCell {
+class AllComicTBViewCell: BaseTBCell {
+    var data: HomeModel {
+        didSet {
+            
+        }
+    }
 
-//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//        super.init(style: style, reuseIdentifier: <#T##String?#>)
-//    }
-//    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

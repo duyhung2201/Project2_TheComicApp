@@ -41,8 +41,8 @@
 		18B73FE12249D5A000402EFD /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B73FE02249D5A000402EFD /* SearchModel.swift */; };
 		18B8D22D224870F900E3C886 /* superman.gif in Resources */ = {isa = PBXBuildFile; fileRef = 18B8D22C224870F800E3C886 /* superman.gif */; };
 		18C85A72223E48FC00CF45AE /* IssueReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C85A70223E48FC00CF45AE /* IssueReading.swift */; };
-		18CC108522A8F316006F58F0 /* AllCateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC108422A8F316006F58F0 /* AllCateViewController.swift */; };
-		18CC108722A8F402006F58F0 /* AllCateTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC108622A8F402006F58F0 /* AllCateTBViewCell.swift */; };
+		18CC108522A8F316006F58F0 /* AllComicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC108422A8F316006F58F0 /* AllComicViewController.swift */; };
+		18CC108722A8F402006F58F0 /* AllComicTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC108622A8F402006F58F0 /* AllComicTBViewCell.swift */; };
 		18E4F118223CF82500604154 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4F116223CF82500604154 /* InfoViewController.swift */; };
 		18E4F119223CF82500604154 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E4F117223CF82500604154 /* InfoView.xib */; };
 		18EC39E72247A06300E83E36 /* LoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC39E62247A06300E83E36 /* LoadView.swift */; };
@@ -99,8 +99,8 @@
 		18B73FE02249D5A000402EFD /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		18B8D22C224870F800E3C886 /* superman.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = superman.gif; sourceTree = "<group>"; };
 		18C85A70223E48FC00CF45AE /* IssueReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueReading.swift; sourceTree = "<group>"; };
-		18CC108422A8F316006F58F0 /* AllCateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCateViewController.swift; sourceTree = "<group>"; };
-		18CC108622A8F402006F58F0 /* AllCateTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCateTBViewCell.swift; sourceTree = "<group>"; };
+		18CC108422A8F316006F58F0 /* AllComicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllComicViewController.swift; sourceTree = "<group>"; };
+		18CC108622A8F402006F58F0 /* AllComicTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllComicTBViewCell.swift; sourceTree = "<group>"; };
 		18E4F116223CF82500604154 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		18E4F117223CF82500604154 /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		18EC39E62247A06300E83E36 /* LoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadView.swift; path = /Users/apple/Documents/Repository/Xcode/Swift/IOS_TheComicApp/project2.2/project2/Classes/Controllers/LoadView.swift; sourceTree = "<absolute>"; };
@@ -155,7 +155,7 @@
 				18B1649B22A822840029683B /* HomeTBViewCell3.swift */,
 				18B1649522A7EA0D0029683B /* HomeCLViewCell2.swift */,
 				18B1649C22A822840029683B /* HomeTBViewCell3.xib */,
-				18CC108622A8F402006F58F0 /* AllCateTBViewCell.swift */,
+				18CC108622A8F402006F58F0 /* AllComicTBViewCell.swift */,
 			);
 			path = Views2;
 			sourceTree = "<group>";
@@ -164,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				18B1649722A817360029683B /* HomeViewController2.swift */,
-				18CC108422A8F316006F58F0 /* AllCateViewController.swift */,
+				18CC108422A8F316006F58F0 /* AllComicViewController.swift */,
 			);
 			path = Controllers2;
 			sourceTree = "<group>";
@@ -458,7 +458,7 @@
 				18B534A122A8BC30004825BD /* RealmManager.swift in Sources */,
 				18B73FE12249D5A000402EFD /* SearchModel.swift in Sources */,
 				406303012236A2FC002BB8DE /* ComicAPIManager.swift in Sources */,
-				18CC108722A8F402006F58F0 /* AllCateTBViewCell.swift in Sources */,
+				18CC108722A8F402006F58F0 /* AllComicTBViewCell.swift in Sources */,
 				406B4A612236954600568555 /* HomeViewController.swift in Sources */,
 				406303072236A650002BB8DE /* HomeModel.swift in Sources */,
 				406303042236A3EC002BB8DE /* Constants.swift in Sources */,
@@ -487,7 +487,7 @@
 				18B1648A22A7737F0029683B /* FavoriteModel.swift in Sources */,
 				18B1648E22A773B90029683B /* CommentModel.swift in Sources */,
 				18B72805229C4156006A8B19 /* SignupViewController.swift in Sources */,
-				18CC108522A8F316006F58F0 /* AllCateViewController.swift in Sources */,
+				18CC108522A8F316006F58F0 /* AllComicViewController.swift in Sources */,
 				186A0A4A225CB4B4007711FA /* SimilarComicModel.swift in Sources */,
 				18B1649822A817360029683B /* HomeViewController2.swift in Sources */,
 			);

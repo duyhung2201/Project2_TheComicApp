@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol BaseTBViewCellDelegate {
+    func pushVCToComic(id_comic: Int)
+    func pushVCToAllComic(title: String, data: [HomeModel])
+}
+
 class HomeTBViewCell3: BaseTBCell {
     
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    var delegate : BaseTBViewCellDelegate?
     
     var cellData = [HomeModel]()  {
         didSet {
@@ -32,7 +38,10 @@ class HomeTBViewCell3: BaseTBCell {
 
         // Configure the view for the selected state
     }
-
+    @IBAction func tapSeeAll(_ sender: Any) {
+        self.delegate?.pushVCToAllComic(title: self.titleLbl.text!, data: cellData) 
+    }
+    
     func setData(title: String, data: [HomeModel]) {
         self.titleLbl.text = title
         self.cellData = data
@@ -72,4 +81,7 @@ extension HomeTBViewCell3: UICollectionViewDataSource, UICollectionViewDelegateF
         return 10
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.pushVCToComic(id_comic: cellData[indexPath.row].id)
+    }
 }
