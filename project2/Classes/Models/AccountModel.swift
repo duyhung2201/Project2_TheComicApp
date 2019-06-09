@@ -12,7 +12,7 @@ import RealmSwift
 class User: Object {
     @objc dynamic var id = ""
     @objc dynamic var password = ""
-    @objc dynamic var level:Int = 0
+    @objc dynamic var level:Int = 1
     @objc dynamic var avatarName = "avatar720x720"
     var recent = List<Int>()
     var favorites = List<Favorite>()
@@ -37,18 +37,22 @@ class User: Object {
         self.recent.insert(id_comic, at: 0)
     }
     
-    func pushFavorite(id_comic: Int) {
-        let favorite = Favorite(id_user: self.id, id_comic: id_comic)
-        favorites.insert(favorite, at: 0)
+    func addFavorite(favorite: Favorite) {
+        favorites.append(favorite)
+    }
+    func removeFavorite(id_comic: Int) {
+        for i in 0..<favorites.count {
+            if (favorites[i].id_comic == id_comic) {
+                favorites.remove(at: i)
+            }
+        }
     }
     
-    func pushRating(id_comic: Int, rating_star: Double) {
-        let rating = Rating(id_user: self.id, id_comic: id_comic, rating_star: rating_star , user_level: self.level)
-        ratings.insert(rating, at: 0)
+    func addRating(rating: Rating) {
+        ratings.append(rating)
     }
     
-    func pushComment(id_comic: Int, comment: String) {
-        let comment = Comment(id_user: self.id, id_comic: id_comic, comment: comment)
+    func addComment(comment: Comment) {
         comments.insert(comment, at: 0)
     }
     

@@ -17,7 +17,7 @@ class IssueReading: UIPageViewController {
     var idIssue: String = ""
     var pageIndex = 0
     var numPages = 0
-    let loadView = sharedLoadView
+    let loadView = LoadView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

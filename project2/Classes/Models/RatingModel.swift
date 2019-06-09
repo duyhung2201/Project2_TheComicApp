@@ -15,11 +15,11 @@ class Rating : Object {
     @objc dynamic var rating_star: Double = 0
     @objc dynamic var rated_at = Date.init(timeIntervalSinceNow: 0)
     
-    convenience init(id_user: String, id_comic: Int, rating_star: Double, user_level: Int) {
+    convenience init(id_user: String, id_comic: Int, rating_point: Double, user_level: Int) {
         self.init()
         self.id_user = id_user
         self.id_comic = id_comic
-        self.rating_star = rating_star
+        self.rating_star = rating_point
         self.user_level = user_level
     }
 }

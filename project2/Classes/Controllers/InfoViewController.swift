@@ -52,7 +52,7 @@ class InfoViewController: UIViewController {
     
     var urlComic: String = ""
     var rowPicked: Int = 0
-    let loadView = sharedLoadView
+    let loadView = LoadView()
     var similarComicModel = [SimilarComicModel]() {
         didSet{
             self.similarCol.reloadData()

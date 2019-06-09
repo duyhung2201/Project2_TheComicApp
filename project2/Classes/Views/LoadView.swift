@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class LoadView: UIView {
+    
     lazy var gif : UIImageView = {
         
         let gif = UIImageView(image: UIImage.gifImageWithName("superman"))

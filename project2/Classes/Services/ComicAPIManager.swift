@@ -28,7 +28,6 @@ class ComicApiManage: NSObject {
                     } else {
                         let json = JSON(data!)
                         let data = InfoComicModel2(json: json)
-                        
                         DispatchQueue.main.async {
                             completion(true, data)
                         }

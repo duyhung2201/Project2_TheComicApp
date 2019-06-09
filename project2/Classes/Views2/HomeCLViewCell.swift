@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import SnapKit
 
-class HomeCLViewCell2: BaseCLCell {
+class HomeCLViewCell: BaseCLCell {
     var data: HomeModel?{
         didSet{
             if let data = data {
@@ -18,20 +17,28 @@ class HomeCLViewCell2: BaseCLCell {
         }
     }
     
-    var imgComicView: ImgComicView = ImgComicView()
+    var imgComicViewCell = ImgComicView()
+    var imgHeight = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubview(imgComicView)
-        setUpContentView()
+        self.contentView.addSubview(imgComicViewCell)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func initData(imgHeight: Int, data: HomeModel){
+        self.imgHeight = imgHeight
+        self.data = data
+        
+        setUpContentView()
+    }
+    
     func setUpContentView() {
-        imgComicView.snp.makeConstraints { (make) in
+        imgComicViewCell.snp.makeConstraints { (make) in
             make.left.right.equalTo(0)
             make.top.equalTo(0)
             make.bottom.equalTo(0)
@@ -39,6 +46,6 @@ class HomeCLViewCell2: BaseCLCell {
     }
     
     func setImgComicView(data: HomeModel) {
-        imgComicView.data = data
+        imgComicViewCell.initData(imgHeight: self.imgHeight, id_comic: data.id, imgUrl: data.imgUrl, title: data.title, sub_title: data.issueName) 
     }
 }

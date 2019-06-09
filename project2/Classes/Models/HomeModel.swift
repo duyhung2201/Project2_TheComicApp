@@ -19,6 +19,9 @@ class HomeModel: Object {
 //    "issue_name": "Issue # 7",
 //    "id": 5465
 //},
+//    "_id": 5392,
+//    "title": "Marvel Zombie (2018)",
+//    "cover": "https://comicpunch.net/pics4/bork07.jpg"
     
     @objc dynamic var imgUrl: String = ""
     @objc dynamic var title: String = ""
@@ -35,6 +38,12 @@ class HomeModel: Object {
         url = json["url"].stringValue
         issueUrl = json["issue_url"].stringValue
         id = json["id"].intValue
+    }
+    
+    func shortInit(json: JSON){
+        self.imgUrl = json["cover"].stringValue
+        self.id = json["_id"].intValue
+        self.title = json["title"].stringValue
     }
     
 }

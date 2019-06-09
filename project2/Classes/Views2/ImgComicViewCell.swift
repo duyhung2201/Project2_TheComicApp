@@ -1,20 +1,16 @@
 //
-//  ImgComicView.swift
+//  ImgComicViewCell.swift
 //  project2
 //
-//  Created by Macintosh on 6/5/19.
+//  Created by Macintosh on 6/7/19.
 //  Copyright © 2019 HoaPQ. All rights reserved.
 //
 
 import UIKit
 import Cosmos
-//import Kingfisher
 
-protocol ReloadTBVCellDelegate {
-    func reloadCLVCell()
-}
 
-class ImgComicView: UIView {
+class ImgComicViewCell: UIView {
     var imgHeigh = 0
     var id_comic = 0
     var delegate : ReloadTBVCellDelegate?
@@ -30,7 +26,7 @@ class ImgComicView: UIView {
         return img
     }()
     
-    lazy var title : UILabel = {
+    var title : UILabel = {
         let title = UILabel()
         title.numberOfLines = 0
         title.font = UIFont.boldSystemFont(ofSize: 20)
@@ -47,7 +43,7 @@ class ImgComicView: UIView {
     }()
     
     var ratingPoint : UILabel = {
-       let ratingPoint = UILabel()
+        let ratingPoint = UILabel()
         ratingPoint.textColor = GRAY_COLOR
         ratingPoint.font = UIFont.boldSystemFont(ofSize: 20)
         
@@ -59,7 +55,7 @@ class ImgComicView: UIView {
         options.updateOnTouch = false
         options.starSize = 20
         options.fillMode = .precise
-        options.starMargin = 1
+        options.starMargin = 0
         options.filledColor = GRAY_COLOR
         options.emptyBorderColor = GRAY_COLOR
         options.filledBorderColor = GRAY_COLOR
@@ -87,7 +83,7 @@ class ImgComicView: UIView {
         favoriteBtn.font = UIFont.boldSystemFont(ofSize: 20)
         favoriteBtn.textColor = .white
         
-       return favoriteBtn
+        return favoriteBtn
     }()
     
     override init(frame: CGRect) {
@@ -114,24 +110,25 @@ class ImgComicView: UIView {
         self.id_comic = id_comic
         self.favoriteState = RealmManager.shared.isFavorited(id_comic: id_comic)
         
-        self.rating.rating = 0
+        let _rating = ["" : 1.2]
+        self.rating.rating = _rating["rating_point"]!
         
-//        switch _rating {
-//        case 0:
+        switch _rating["count"]! {
+        case 0:
             ratingCount.text = "Not Enough Ratings"
             self.ratingPoint.text = "0"
-//        case 1:
-//            self.ratingPoint.text = "0"
-//            ratingCount.text = "1 Rating"
-//        default:
-//            self.ratingPoint.text = "0"
-//            ratingCount.text = "0"
-//        }
-
+        case 1:
+            self.ratingPoint.text = "\(_rating["rating_point"]!)"
+            ratingCount.text = "1 Rating"
+        default:
+            self.ratingPoint.text = "\(_rating["rating_point"]!)"
+            ratingCount.text = "\(_rating["count"]!) Ratings"
+        }
+        
         self.updateFavoriteBtn()
         self.initLayout()
     }
-
+    
     func initLayout() {
         setImgLayout()
         setTitleLayout()
@@ -144,7 +141,7 @@ class ImgComicView: UIView {
         setFavoriteBtnLayout()
     }
     
-
+    
     
     func updateFavoriteBtn() {
         if favoriteState {
@@ -156,7 +153,7 @@ class ImgComicView: UIView {
     }
     
     @objc func tapRating() {
-
+        
     }
     
     @objc func tapFavorite() {
@@ -168,7 +165,7 @@ class ImgComicView: UIView {
             favoriteState = true
             favoriteBtn.backgroundColor = BLUE_COLOR
             RealmManager.shared.updateFavortie(id_comic: self.id_comic)
-        }         
+        }
     }
     
     //MARK : set Sub-Layout
@@ -235,5 +232,5 @@ class ImgComicView: UIView {
         rating.addGestureRecognizer(tap)
     }
     
-        
+    
 }

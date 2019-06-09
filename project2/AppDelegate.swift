@@ -8,7 +8,6 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,10 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         IQKeyboardManager.shared.enable = true
         
-      
+//        RealmManager.shared.setDefaultRealmForUser(path: url)
+        RealmManager.shared.printRealmUrl()
+        let defaults = UserDefaults.standard
+        if defaults.data(forKey: USER_KEY) != nil {
+            print("!nil: \(defaults.string(forKey: USER_KEY)!)")
+        }
+        else {
+            defaults.set("duyhung2201@gmail.com", forKey: USER_KEY)
+        }
+        RealmManager.shared.setUser(usr_id: defaults.string(forKey: USER_KEY)!)
         
 //        let tabbarVC = UITabBarController()
 //        let  naviHome = UINavigationController()
@@ -32,14 +39,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        naviSearch.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
 //
 //        tabbarVC.viewControllers = [naviHome, naviSearch]
-        
-        let naviFromLogin = UINavigationController(rootViewController: LoginViewController())
+        let infoVC = ComicViewController()
+        infoVC.initData(id_comic: 5166)
+        let navi = UINavigationController(rootViewController: HomeViewController2())
         
         window = UIWindow()
         window?.backgroundColor = .white
-        window?.rootViewController = HomeViewController2()
+        window?.rootViewController = navi
         window?.makeKeyAndVisible()
         return true
+    }
+    
+    func test() {
+        //        RealmManager.shared.addComment(id_comic: 4813, comment: "It's not very bad")
+        //        RealmManager.shared.updateFavortie(id_comic: 5166)
+        //        RealmManager.shared.addRating(id_comic: 5166, rating_point: 4.4)
+            
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -68,31 +83,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 //MARK: - Collect realm
-extension AppDelegate {
-    /// set up realm
-    func realmConfiguration() {
-        let config = Realm.Configuration(
-            // Set the new schema version. This must be greater than the previously used
-            // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 1,
-            
-            // Set the block which will be called automatically when opening a Realm with
-            // a schema version lower than the one set above
-            migrationBlock: { migration, oldSchemaVersion in
-                // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 1) {
-                    // Nothing to do!
-                    // Realm will automatically detect new properties and removed properties
-                    // And will update the schema on disk automatically
-                }
-        })
-        
-        // Tell Realm to use this new configuration object for the default Realm
-        Realm.Configuration.defaultConfiguration = config
-        
-        // Now that we've told Realm how to handle the schema change, opening the file
-        // will automatically perform the migration
-        let realm = try! Realm()
-    }
-    
-}
+//extension AppDelegate {
+//    /// set up realm
+//    func realmConfiguration() {
+//        let config = Realm.Configuration(
+//            // Set the new schema version. This must be greater than the previously used
+//            // version (if you've never set a schema version before, the version is 0).
+//            schemaVersion: 1,
+//
+//            // Set the block which will be called automatically when opening a Realm with
+//            // a schema version lower than the one set above
+//            migrationBlock: { migration, oldSchemaVersion in
+//                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+//                if (oldSchemaVersion < 1) {
+//                    // Nothing to do!
+//                    // Realm will automatically detect new properties and removed properties
+//                    // And will update the schema on disk automatically
+//                }
+//        })
+//
+//        // Tell Realm to use this new configuration object for the default Realm
+//        Realm.Configuration.defaultConfiguration = config
+//
+//        // Now that we've told Realm how to handle the schema change, opening the file
+//        // will automatically perform the migration
+//        let realm = try! Realm()
+//    }
+//
+//}

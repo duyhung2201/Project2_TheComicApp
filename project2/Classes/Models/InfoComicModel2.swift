@@ -21,7 +21,7 @@ func parseJsonToArr(att: String, json: JSON) -> [String] {
 class InfoComicModel2: NSObject {
     var author: String = ""
     var genre: String = ""
-    var id: String = ""
+    var id = 0
     var title: String = ""
     var publisher: String = ""
     var year: String = ""
@@ -30,12 +30,13 @@ class InfoComicModel2: NSObject {
     var image: String = ""
     var number_issues: Int = 0
     var issues = [IssueComic2]()
-    var similars = [SimilarComic2]()
+    var similars = [HomeModel]()
     
-    init(json: JSON) {
+    convenience init(json: JSON) {
+        self.init()
         author = parseJsonToArr(att: "author", json: json).joined(separator: ", ")
         genre = parseJsonToArr(att: "genre", json: json).joined(separator: ", ")
-        id = json["_id"].stringValue
+        id = json["_id"].intValue
         image = json["cover"].stringValue
         number_issues = json["number_issues"].intValue
         publisher = json["publisher"].stringValue
@@ -49,8 +50,9 @@ class InfoComicModel2: NSObject {
             self.issues.append(_issue)
         }
         
-        for i in json["similar"].arrayValue {
-            let _similar = SimilarComic2(json: i)
+        for data in json["similar"].arrayValue {
+            let _similar = HomeModel()
+            _similar.shortInit(json: data)
             self.similars.append(_similar)
         }
     }

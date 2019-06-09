@@ -17,8 +17,9 @@ class HomeViewController2: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
-        HomeTBViewCell3.registerCellByNib(tableView)
-        
+        HomeTBViewCell.registerCellByClass(tableView)
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: MARGIN, bottom: 0, right: MARGIN)
+        tableView.tableFooterView = UIView(frame: .zero)
         return tableView
     }()
     
@@ -27,16 +28,6 @@ class HomeViewController2: UIViewController {
         initLayout()
         getData()
         
-        
-    }
-    	
-    func test() {
-        //        ComicApiManage.shared.getComicById(id_comic: 5465) { (success, data) in
-        //            if success{
-        //                let data = data as? InfoComicModel2
-        //            }
-        //        }
-        print(RealmManager.shared.getComicRating(id_comic: 5465))
     }
     
     func initLayout() {
@@ -71,18 +62,19 @@ class HomeViewController2: UIViewController {
 
 extension HomeViewController2 : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        guard let cell = HomeTBViewCell3.loadCell(self.tableView) as? HomeTBViewCell3 else { return BaseTBCell() }
+        guard let cell = HomeTBViewCell.loadCell(self.tableView) as? HomeTBViewCell else { return BaseTBCell() }
         
         switch indexPath.item {
         case 0:
-            cell.setData(title: "Newest", data: self.newestComics)
+            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Newest Comics", data: self.newestComics)
 
         case 1:
-            cell.setData(title: "Popular", data: self.popularComics)
+            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Top Read Comics", data: self.popularComics)
 
         default:
             break
         }
+        cell.delegate = self
         
         return cell
     }
@@ -94,12 +86,17 @@ extension HomeViewController2 : UITableViewDelegate , UITableViewDataSource {
 
 extension HomeViewController2: BaseTBViewCellDelegate {
     func pushVCToComic(id_comic: Int) {
-        print("pushToComic")
+        let vc = ComicViewController()
+        vc.initData(id_comic: id_comic)
+        
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func pushVCToAllComic(title: String, data: [HomeModel]) {
-        let vc = AllComicViewController()
-        vc.data = data
+       
+        let vc = LstComicTBViewController()
+        vc.initData(title: title, data: data)
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

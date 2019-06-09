@@ -11,7 +11,7 @@ import RealmSwift
 
 class ComicModel: Object {
     @objc dynamic var id_comic = 0
-    @objc dynamic var rating_star: Double = 0
+    @objc dynamic var rating_star: Double = 0.0
     var favorites = List<Favorite>()
     var ratings = List<Rating>()
     var comments = List<Comment>()
@@ -19,13 +19,12 @@ class ComicModel: Object {
     convenience init(id_comic : Int) {
         self.init()
         self.id_comic = id_comic
-        setRatingStar()
     }
     override static func primaryKey() -> String? {
         return "id_comic"
     }
     
-    func setRatingStar() {
+    func updateRatingPoint() {
         var totalStar: Double = 0
         var totalLvl:Double = 0
         for rating in self.ratings {
@@ -33,21 +32,27 @@ class ComicModel: Object {
             totalStar += rating.rating_star*usr_lvl
             totalLvl += usr_lvl
         }
-        self.rating_star = totalStar/totalLvl
+        rating_star = totalStar/totalLvl 
     }
     
-    func pushFavorite(id_usr: String) {
-        let favorite = Favorite(id_user: id_usr, id_comic: self.id_comic)
-        favorites.insert(favorite, at: 0)
+    func addFavorite(favorite: Favorite) {
+        favorites.append(favorite)
     }
     
-    func pushRating(id_usr: String, usr_lvl: Int, rating_star: Double) {
-        let rating = Rating(id_user: id_usr, id_comic: self.id_comic, rating_star: rating_star , user_level: usr_lvl)
-        ratings.insert(rating, at: 0)
+    func removeFavorite(id_usr: String) {
+        for i in 0..<favorites.count {
+            if (favorites[i].id_user == id_usr) {
+                favorites.remove(at: i)
+            }
+        }
     }
     
-    func pushComment(id_usr: String, comment: String) {
-        let comment = Comment(id_user: id_usr, id_comic: self.id_comic, comment: comment)
+    func addRating(rating: Rating) {
+        ratings.append(rating)
+        updateRatingPoint()
+    }
+    
+    func addComment(comment: Comment) {
         comments.insert(comment, at: 0)
     }
 }

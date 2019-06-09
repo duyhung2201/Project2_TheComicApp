@@ -13,6 +13,7 @@ class BaseTBCell: UITableViewCell {
     //MARK: define for cell
     static func identifier() -> String {
         return String(describing: self.self)
+        
     }
     
     static func height() -> CGFloat {
@@ -29,6 +30,9 @@ class BaseTBCell: UITableViewCell {
     }
     
     static func loadCell(_ tableView: UITableView) -> BaseTBCell {
-        return tableView.dequeueReusableCell(withIdentifier: self.identifier()) as! BaseTBCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier()) as! BaseTBCell
+        cell.selectionStyle = .none
+        
+        return cell
     }
 }

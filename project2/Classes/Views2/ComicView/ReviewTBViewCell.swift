@@ -1,20 +1,16 @@
 //
-//  AllCateTBViewCell.swift
+//  ReviewTBViewCell.swift
 //  project2
 //
-//  Created by Macintosh on 6/6/19.
+//  Created by Macintosh on 6/7/19.
 //  Copyright © 2019 HoaPQ. All rights reserved.
 //
 
 import UIKit
 
-class AllComicTBViewCell: BaseTBCell {
-    var data: HomeModel {
-        didSet {
-            
-        }
-    }
-
+class ReviewTBViewCell: BaseTBCell {
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -23,10 +19,4 @@ class AllComicTBViewCell: BaseTBCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
