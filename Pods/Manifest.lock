@@ -1,32 +1,26 @@
 PODS:
-  - Alamofire (4.8.1)
   - Cosmos (19.0.3)
-  - iOSDropDown (0.2.7)
   - IQKeyboardManagerSwift (6.3.0)
-  - Kingfisher (5.2.0)
-  - Realm (3.7.6):
-    - Realm/Headers (= 3.7.6)
-  - Realm/Headers (3.7.6)
-  - RealmSwift (3.7.6):
-    - Realm (= 3.7.6)
-  - SnapKit (4.2.0)
+  - Kingfisher (5.4.0)
+  - Realm (3.15.0):
+    - Realm/Headers (= 3.15.0)
+  - Realm/Headers (3.15.0)
+  - RealmSwift (3.15.0):
+    - Realm (= 3.15.0)
+  - SnapKit (5.0.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
-  - Alamofire
   - Cosmos
-  - iOSDropDown
   - IQKeyboardManagerSwift
   - Kingfisher
   - RealmSwift
   - SnapKit
-  - SwiftyJSON
+  - SwiftyJSON (~> 4.2.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - Cosmos
-    - iOSDropDown
     - IQKeyboardManagerSwift
     - Kingfisher
     - Realm
@@ -35,16 +29,14 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
-  iOSDropDown: 7a4cfc67d5166f319858747b63cd2f7760c4fb4b
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
-  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
-  Realm: 9eaecad54712d6246d08ba34c10f354e4715d7d3
-  RealmSwift: 1fe08b4ebaeeaacf17f9ba0343f7b25c9fc31fa6
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
+  Realm: 9b834e1be6062f544805252c812348872dc5d4ed
+  RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 2b824edd52e8a32c4036e844f3f2d8ff142fc1a0
+PODFILE CHECKSUM: 4cf7f25ae9a0f4a6309ab7dd00fbea3f44d9b1b3
 
 COCOAPODS: 1.5.3
