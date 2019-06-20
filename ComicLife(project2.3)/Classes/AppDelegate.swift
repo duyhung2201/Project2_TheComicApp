@@ -22,11 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         RealmManager.shared.printRealmUrl()
         let navi = UINavigationController(rootViewController: LoginViewController())
+        navi.navigationBar.isTranslucent = false
         let defaults = UserDefaults.standard
         if defaults.string(forKey: USER_KEY) != nil {
             
             if RealmManager.shared.setUser(id_usr: defaults.string(forKey: USER_KEY)!) {
-                navi.pushViewController(setHomeTabbarVC(), animated: false)
+                navi.pushViewController(HomeTabbarViewController(), animated: false)
             }
         }
         else {

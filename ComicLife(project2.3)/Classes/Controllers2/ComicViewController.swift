@@ -11,7 +11,15 @@ import RealmSwift
 
 class ComicViewController: UIViewController{
     var id_comic : Int?
-    var data : InfoComicModel?
+    var data : InfoComicModel? {
+        didSet {
+            self.title = self.data!.title
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            self.configTBView()
+        }
+    }
     var fvrState = false
     var fvrCount = 0
     var ratingPoint = 0.0
@@ -41,9 +49,7 @@ class ComicViewController: UIViewController{
         DispatchQueue.main.async {
             self.tableView.beginUpdates()
             self.tableView.reloadData()
-//            self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: UITableView.RowAnimation.none)
             (self.tableView.cellForRow(at: IndexPath(row: 2, section: 0) ) as? ReviewTBViewCell)?.collectionView.reloadData()
-            (self.tableView.cellForRow(at: IndexPath(row: 2, section: 0) ) as? ReviewTBViewCell)?.initLayout()
             (self.tableView.cellForRow(at: IndexPath(row: 4, section: 0) ) as? HomeTBViewCell)?.collectionView.reloadData()
             self.tableView.endUpdates()
         }
@@ -52,7 +58,6 @@ class ComicViewController: UIViewController{
     func initData(id_comic: Int){
         self.id_comic = id_comic
         getData(id_comic: id_comic)
-        self.navigationController?.navigationBar.layer.borderWidth = 0
     }
     
     func updateRealmData(id_comic:Int) {
@@ -68,6 +73,7 @@ class ComicViewController: UIViewController{
         tableView.delegate = self
         tableView.dataSource = self
         TopComicTBViewCell.registerCellByClass(tableView)
+        SecondComicTBViewCell.registerCellByClass(tableView)
         SummaryComicTBViewCell.registerCellByClass(tableView)
         InfoComicTBViewCell.registerCellByClass(tableView)
         HomeTBViewCell.registerCellByClass(tableView)
@@ -78,11 +84,7 @@ class ComicViewController: UIViewController{
         ComicApiManage.shared.getComicById(id_comic: self.id_comic!) { (success, data) in
             if success {
                 self.data = data as? InfoComicModel
-                self.title = self.data?.title
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                self.configTBView()
+                
             }
         }
     }
@@ -112,51 +114,54 @@ class ComicViewController: UIViewController{
 extension ComicViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         switch indexPath.row {
+//        case 0:
+//            guard let cell = TopComicTBViewCell.loadCell(tableView) as? TopComicTBViewCell else { return BaseTBCell() }
+//            cell.initData(imgHeight: COL_CELL_HEIGHT,
+//                          id_comic: (self.data!.id),
+//                          imgUrl: (self.data!.image),
+//                          title: (self.data!.title),
+//                          sub_title: (self.data!.publisher),
+//                          fvrState: self.fvrState)
+//            cell.delegate = self
+//
+//            return cell
+//        case 1:
+//            guard let cell = SecondComicTBViewCell.loadCell(tableView) as? SecondComicTBViewCell else {return BaseTBCell()}
+//            cell.initData(ratingCount: self.ratingCount, ratingPoint: self.ratingPoint, fvrCount: self.fvrCount, reviewCount: self.reviews.count)
+//
+//            return cell
+//        case 2:
+//            guard let cell = SummaryComicTBViewCell.loadCell(tableView) as? SummaryComicTBViewCell else { return BaseTBCell() }
+//            cell.initData(title: "Summary", summary: (self.data!.summary))
+//
+//            return cell
         case 0:
-            guard let cell = TopComicTBViewCell.loadCell(tableView) as? TopComicTBViewCell else { return BaseTBCell() }
-            cell.initData(imgHeight: COL_CELL_HEIGHT,
-                          id_comic: (self.data!.id),
-                          imgUrl: (self.data!.image),
-                          title: (self.data!.title),
-                          sub_title: (self.data!.publisher),
-                          ratingCount: self.ratingCount,
-                          ratingPoint: self.ratingPoint,
-                          fvrState: self.fvrState,
-                          fvrCount: self.fvrCount,
-                          reviewCount: self.reviews.count)
-            cell.delegate = self
-            
-            return cell
-        case 1:
-            guard let cell = SummaryComicTBViewCell.loadCell(tableView) as? SummaryComicTBViewCell else { return BaseTBCell() }
-            cell.initData(title: "Summary", summary: (self.data!.summary))
-
-            return cell
-        case 2:
             guard let cell = ReviewTBViewCell.loadCell(tableView) as? ReviewTBViewCell else { return BaseTBCell() }
             cell.initData(id_comic: self.id_comic! ,height: COL_CELL_HEIGHT2, title: "Review", data: self.reviews)
             cell.delegate = self
-            
+
             return cell
-        case 3:
+        case 1:
             guard let cell = InfoComicTBViewCell.loadCell(tableView) as? InfoComicTBViewCell else { return BaseTBCell() }
             cell.initData(title: "Infomation", data: getInfoTBData(data: data!))
 
             return cell
-        case 4:
-            guard let cell = HomeTBViewCell.loadCell(tableView) as? HomeTBViewCell else { return BaseTBCell() }
-            cell.initData(imgHeight: COL_CELL_HEIGHT2, title: "You May Also Like", data: (self.data!.similars))
-            cell.delegate = self 
-            cell.separatorInset = UIEdgeInsets(top: 0, left: SCREEN_WIDTH, bottom: 0, right: 0)
-            
-            return cell
+//        case 5:
+//            guard let cell = HomeTBViewCell.loadCell(tableView) as? HomeTBViewCell else { return BaseTBCell() }
+//            var similarData = self.data!.similars
+//            similarData.removeFirst()
+//            cell.initData(imgHeight: COL_CELL_HEIGHT2, title: "You May Also Like", data: similarData)
+//            cell.delegate = self
+//            cell.separatorInset = UIEdgeInsets(top: 0, left: SCREEN_WIDTH, bottom: 0, right: 0)
+//
+//            return cell
         default:
             return BaseTBCell()
         }
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 2
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (tableView.indexPathsForVisibleRows?.contains(IndexPath(row: 0, section: 0)))! {

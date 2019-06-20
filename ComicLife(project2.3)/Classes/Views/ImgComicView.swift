@@ -100,6 +100,7 @@ class ImgComicView: UIView {
         self.addSubview(ratingPoint)
         self.addSubview(ratingCount)
         self.addSubview(favoriteBtn)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -125,7 +126,7 @@ class ImgComicView: UIView {
             self.ratingCount.text = "1 Rating"
         default:
             self.ratingPoint.text = "\(ratingPoint)"
-            self.ratingCount.text = "\(ratingCount)"
+            self.ratingCount.text = "\(ratingCount) Ratings"
         }
 
         self.updateFavoriteBtn()

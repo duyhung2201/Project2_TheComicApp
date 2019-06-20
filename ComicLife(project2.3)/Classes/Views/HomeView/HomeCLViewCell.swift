@@ -15,16 +15,21 @@ class HomeCLViewCell: BaseCLCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.contentView.addSubview(imgComicView)
+        self.addSubview(imgComicView)
         
+//        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+//        layer.shadowOpacity = 2
+//        layer.shadowRadius = 4.0
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func initData(imgHeight: Int, data: HomeModel){
-        let realmData = RealmManager.shared.getRealmComicData(id_comic: data.id)
+    
+    func initData(imgHeight: Int, data: HomeModel, realmData: [String : Any]){
         
         imgComicView.initData(imgHeight: imgHeight,
                                   id_comic: data.id,
@@ -42,7 +47,8 @@ class HomeCLViewCell: BaseCLCell {
     
     func setUpLayout() {
         imgComicView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
             make.top.equalTo(0)
             make.bottom.equalTo(0)
         }

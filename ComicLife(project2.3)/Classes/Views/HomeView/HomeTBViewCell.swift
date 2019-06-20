@@ -143,7 +143,9 @@ extension HomeTBViewCell: UICollectionViewDataSource, UICollectionViewDelegateFl
         guard let cell = HomeCLViewCell.loadCell(self.collectionView, path: indexPath) as? HomeCLViewCell else{
             return BaseCLCell()
         }
-        cell.initData(imgHeight: self.imgHeight, data: data[indexPath.row])
+        
+        let realmData = RealmManager.shared.getRealmComicData(id_comic: data[indexPath.row].id)
+        cell.initData(imgHeight: self.imgHeight, data: data[indexPath.row], realmData: realmData)
         return cell
     }
     
@@ -152,7 +154,7 @@ extension HomeTBViewCell: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

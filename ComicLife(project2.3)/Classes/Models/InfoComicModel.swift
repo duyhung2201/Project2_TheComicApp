@@ -50,7 +50,7 @@ class InfoComicModel: NSObject {
             self.issues.append(_issue)
         }
         
-        for i in 1..<json["similar"].count {
+        for i in 0..<json["similar"].count {
             let _similar = HomeModel()
             _similar.shortInit(json: json["similar"][i])
             self.similars.append(_similar)

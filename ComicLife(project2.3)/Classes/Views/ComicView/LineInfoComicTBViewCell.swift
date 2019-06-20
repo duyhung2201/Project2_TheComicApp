@@ -19,7 +19,7 @@ class LineInfoComicTBViewCell: BaseTBCell {
     
     lazy var detail: UILabel = {
        let detail = UILabel()
-        detail.textAlignment = .justified
+        detail.textAlignment = .left
         detail.font = UIFont.systemFont(ofSize: 14)
         detail.numberOfLines = 0
         

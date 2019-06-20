@@ -9,8 +9,8 @@
 import UIKit
 import SnapKit
 
-class LstComicViewController: UIViewController {
-    var data = [HomeModel](){ 
+class LstComicViewController2: UIViewController {
+    var data = [InfoComicModel](){
         didSet {
             tableView.reloadData()
         }
@@ -28,7 +28,7 @@ class LstComicViewController: UIViewController {
         
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initLayout()
@@ -37,28 +37,9 @@ class LstComicViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    func initData(title: String, data: [HomeModel]){
+    func initData(title: String, data: [InfoComicModel]){
         self.title = title
         self.data = data
-    }
-    
-    func getSuggestData(idArr : [Int]){
-        let group = DispatchGroup()
-        
-        for id in idArr {
-            group.enter()
-            ComicApiManage.shared.getComicById(id_comic: id) { (success, data) in
-                if success {
-                    self.data.append((data as! InfoComicModel).similars[0])
-                    group.leave()
-                }
-            }
-        }
-        group.notify(queue: .main) {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
     }
     
     func initLayout() {
@@ -76,10 +57,10 @@ class LstComicViewController: UIViewController {
     }
 }
 
-extension LstComicViewController : UITableViewDelegate , UITableViewDataSource {
+extension LstComicViewController2 : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         guard let cell = LstComicTBViewCell.loadCell(tableView) as? LstComicTBViewCell else { return BaseTBCell() }
-        cell.initData(imgHeight: COL_CELL_HEIGHT2, data: self.data[indexPath.row])
+        cell.initData(imgHeight: COL_CELL_HEIGHT2, data: self.data[indexPath.row].similars[0])
         
         if(indexPath.row == data.count){
             cell.separatorInset = UIEdgeInsets(top: 0, left: SCREEN_WIDTH, bottom: 0, right: 0)
@@ -89,7 +70,7 @@ extension LstComicViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.data.count
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ComicViewController()
         vc.initData(id_comic: data[indexPath.row].id)
@@ -98,3 +79,4 @@ extension LstComicViewController : UITableViewDelegate , UITableViewDataSource {
     }
     
 }
+

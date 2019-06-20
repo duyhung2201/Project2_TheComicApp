@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		18021D1322AE336400D7E22C /* ReviewContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18021D1222AE336400D7E22C /* ReviewContentCell.swift */; };
+		1840E49422BA318E0096B1E8 /* UsrComicTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840E49322BA318E0096B1E8 /* UsrComicTBViewCell.swift */; };
+		1840E49622BA33790096B1E8 /* HomeTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840E49522BA33790096B1E8 /* HomeTabbarViewController.swift */; };
+		1840E49822BA908F0096B1E8 /* HomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840E49722BA908E0096B1E8 /* HomeViewController2.swift */; };
+		1840E49A22BA9B7E0096B1E8 /* LstComicViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840E49922BA9B7E0096B1E8 /* LstComicViewController2.swift */; };
 		184EC21922AD13E2000D9CEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC21822AD13E2000D9CEB /* AppDelegate.swift */; };
 		184EC22322AD13E4000D9CEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184EC22122AD13E4000D9CEB /* LaunchScreen.storyboard */; };
 		184EC27222AD1634000D9CEB /* HomeCLViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC24A22AD1634000D9CEB /* HomeCLViewCell.swift */; };
@@ -48,6 +52,7 @@
 		18769EDD22ADFEC600217313 /* WriteReviewTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18769EDC22ADFEC600217313 /* WriteReviewTBViewCell.swift */; };
 		189824FD22AE57E6002AA97E /* LstIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189824FC22AE57E6002AA97E /* LstIssueViewController.swift */; };
 		1898250022AE5B56002AA97E /* LstIssueTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189824FF22AE5B56002AA97E /* LstIssueTBViewCell.swift */; };
+		18BE270722BB3E2600264EB5 /* 2ndComicTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE270622BB3E2600264EB5 /* 2ndComicTBViewCell.swift */; };
 		18CB959322AF438C00A98667 /* TodayComicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB959222AF438C00A98667 /* TodayComicViewController.swift */; };
 		18CB959522AF442900A98667 /* TodayComicTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB959422AF442900A98667 /* TodayComicTBViewCell.swift */; };
 		18CB959722AF4A8700A98667 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB959622AF4A8700A98667 /* HeaderView.swift */; };
@@ -64,6 +69,10 @@
 
 /* Begin PBXFileReference section */
 		18021D1222AE336400D7E22C /* ReviewContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewContentCell.swift; sourceTree = "<group>"; };
+		1840E49322BA318E0096B1E8 /* UsrComicTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsrComicTBViewCell.swift; sourceTree = "<group>"; };
+		1840E49522BA33790096B1E8 /* HomeTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarViewController.swift; sourceTree = "<group>"; };
+		1840E49722BA908E0096B1E8 /* HomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController2.swift; sourceTree = "<group>"; };
+		1840E49922BA9B7E0096B1E8 /* LstComicViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LstComicViewController2.swift; sourceTree = "<group>"; };
 		184EC21522AD13E2000D9CEB /* ComicLife(project2.3).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComicLife(project2.3).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184EC21822AD13E2000D9CEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184EC22222AD13E4000D9CEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,6 +115,7 @@
 		18769EDC22ADFEC600217313 /* WriteReviewTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewTBViewCell.swift; sourceTree = "<group>"; };
 		189824FC22AE57E6002AA97E /* LstIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LstIssueViewController.swift; sourceTree = "<group>"; };
 		189824FF22AE5B56002AA97E /* LstIssueTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LstIssueTBViewCell.swift; sourceTree = "<group>"; };
+		18BE270622BB3E2600264EB5 /* 2ndComicTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2ndComicTBViewCell.swift; sourceTree = "<group>"; };
 		18CB959222AF438C00A98667 /* TodayComicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayComicViewController.swift; sourceTree = "<group>"; };
 		18CB959422AF442900A98667 /* TodayComicTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayComicTBViewCell.swift; sourceTree = "<group>"; };
 		18CB959622AF4A8700A98667 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -170,7 +180,7 @@
 				18CB95A022AF768000A98667 /* Assets.xcassets */,
 				184EC21822AD13E2000D9CEB /* AppDelegate.swift */,
 				184EC26522AD1634000D9CEB /* Controllers2 */,
-				184EC24922AD1634000D9CEB /* Views2 */,
+				184EC24922AD1634000D9CEB /* Views */,
 				184EC25622AD1634000D9CEB /* Models */,
 				184EC26922AD1634000D9CEB /* Helpers */,
 				184EC26F22AD1634000D9CEB /* Services */,
@@ -178,7 +188,7 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		184EC24922AD1634000D9CEB /* Views2 */ = {
+		184EC24922AD1634000D9CEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				185BE7B122AFC52A00E8B917 /* LoadView.swift */,
@@ -192,13 +202,14 @@
 				184EC25422AD1634000D9CEB /* ImgComicViewCell.swift */,
 				18CB959422AF442900A98667 /* TodayComicTBViewCell.swift */,
 			);
-			path = Views2;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		184EC24C22AD1634000D9CEB /* ComicView */ = {
 			isa = PBXGroup;
 			children = (
 				184EC24D22AD1634000D9CEB /* TopComicTBViewCell.swift */,
+				18BE270622BB3E2600264EB5 /* 2ndComicTBViewCell.swift */,
 				184EC25022AD1634000D9CEB /* SummaryComicTBViewCell.swift */,
 				184EC24E22AD1634000D9CEB /* InfoComicTBViewCell.swift */,
 				184EC25222AD1634000D9CEB /* LineInfoComicTBViewCell.swift */,
@@ -232,14 +243,17 @@
 			children = (
 				189824FC22AE57E6002AA97E /* LstIssueViewController.swift */,
 				184EC26622AD1634000D9CEB /* LstComicViewController.swift */,
+				1840E49922BA9B7E0096B1E8 /* LstComicViewController2.swift */,
 				184EC26722AD1634000D9CEB /* ComicViewController.swift */,
 				18CB959A22AF5F0000A98667 /* LoginViewController.swift */,
 				18CB959822AF5F0000A98667 /* SearchViewController.swift */,
 				18CB959922AF5F0000A98667 /* SignupViewController.swift */,
 				184EC26822AD1634000D9CEB /* HomeViewController.swift */,
+				1840E49722BA908E0096B1E8 /* HomeViewController2.swift */,
 				18769ED722ADF64F00217313 /* ReviewViewController.swift */,
 				18DAE00122AF9D3200F9E331 /* IssueReading.swift */,
 				18DAE00022AF9D3200F9E331 /* PageReadingViewController.swift */,
+				1840E49522BA33790096B1E8 /* HomeTabbarViewController.swift */,
 			);
 			path = Controllers2;
 			sourceTree = "<group>";
@@ -280,6 +294,7 @@
 				184EC25522AD1634000D9CEB /* HomeTBViewCell.swift */,
 				184EC24A22AD1634000D9CEB /* HomeCLViewCell.swift */,
 				184EC25322AD1634000D9CEB /* LstComicTBViewCell.swift */,
+				1840E49322BA318E0096B1E8 /* UsrComicTBViewCell.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -434,9 +449,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				184EC27A22AD1634000D9CEB /* LstComicTBViewCell.swift in Sources */,
+				18BE270722BB3E2600264EB5 /* 2ndComicTBViewCell.swift in Sources */,
 				184EC27C22AD1634000D9CEB /* HomeTBViewCell.swift in Sources */,
+				1840E49822BA908F0096B1E8 /* HomeViewController2.swift in Sources */,
 				18CB959C22AF5F0000A98667 /* SignupViewController.swift in Sources */,
 				184EC28D22AD1634000D9CEB /* HomeViewController.swift in Sources */,
+				1840E49A22BA9B7E0096B1E8 /* LstComicViewController2.swift in Sources */,
 				18769EDB22ADFE7300217313 /* RatingReviewTBViewCell.swift in Sources */,
 				18769EDD22ADFEC600217313 /* WriteReviewTBViewCell.swift in Sources */,
 				184EC27522AD1634000D9CEB /* InfoComicTBViewCell.swift in Sources */,
@@ -464,6 +482,7 @@
 				18769ED822ADF64F00217313 /* ReviewViewController.swift in Sources */,
 				184EC28022AD1634000D9CEB /* UserModel.swift in Sources */,
 				18CB959522AF442900A98667 /* TodayComicTBViewCell.swift in Sources */,
+				1840E49622BA33790096B1E8 /* HomeTabbarViewController.swift in Sources */,
 				18CB959F22AF65FF00A98667 /* SearchTBViewCell.swift in Sources */,
 				184EC28C22AD1634000D9CEB /* ComicViewController.swift in Sources */,
 				18D2AC7422ADE8240082A55A /* EmptyReviewCLViewCell.swift in Sources */,
@@ -482,6 +501,7 @@
 				184EC27F22AD1634000D9CEB /* InfoComicModel.swift in Sources */,
 				185BE7B222AFC52A00E8B917 /* LoadView.swift in Sources */,
 				184EC27322AD1634000D9CEB /* ImgComicView.swift in Sources */,
+				1840E49422BA318E0096B1E8 /* UsrComicTBViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

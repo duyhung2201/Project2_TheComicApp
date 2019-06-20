@@ -68,13 +68,6 @@ class RealmManager: NSObject {
         let review = Review(id_user: (user.id), id_comic: id_comic, ratingPoint: ratingPoint, reviewContent: comment)
         try! realm.write {
             self.user.addReview(review: review)
-            guard let comic = realm.objects(ComicModel.self).filter("id_comic == \(id_comic)").first else {
-                let comic = ComicModel(id_comic: id_comic)
-                comic.addReview(review: review)
-                realm.add(comic)
-                return
-            }
-            comic.addReview(review: review)
         }
     }
     
@@ -84,19 +77,21 @@ class RealmManager: NSObject {
     }
     
     func getRealmComicData(id_comic: Int) -> [String : Any] {
-        guard let comic = realm.objects(ComicModel.self).filter("id_comic == \(id_comic)").first else {
-            return [RealmComicTypeData.fvrState.rawValue : false,
-                    RealmComicTypeData.fvrCount.rawValue : 0,
-                    RealmComicTypeData.ratingCount.rawValue : 0,
-                    RealmComicTypeData.ratingPoint.rawValue : 0.0,
-                    RealmComicTypeData.reviews.rawValue : List<Review>()]
-        }
+//        guard let comic = realm.objects(ComicModel.self).filter("id_comic == \(id_comic)").first else {
+//            return [RealmComicTypeData.fvrState.rawValue : false,
+//                    RealmComicTypeData.fvrCount.rawValue : 0,
+//                    RealmComicTypeData.ratingCount.rawValue : 0,
+//                    RealmComicTypeData.ratingPoint.rawValue : 0.0,
+//                    RealmComicTypeData.reviews.rawValue : List<Review>()]
+//        }
+        
         return [RealmComicTypeData.fvrState.rawValue : isFavorited(id_comic: id_comic),
-                RealmComicTypeData.fvrCount.rawValue : comic.favorites.count,
-                RealmComicTypeData.reviewCount.rawValue : comic.reviews.count, 
-                RealmComicTypeData.ratingCount.rawValue : comic.ratings.count,
-                RealmComicTypeData.ratingPoint.rawValue : comic.rating_star,
-                RealmComicTypeData.reviews.rawValue : comic.reviews]
+                RealmComicTypeData.fvrCount.rawValue : Int.random(in: 0...1000),
+                RealmComicTypeData.reviewCount.rawValue : Int.random(in: 0...1000),
+                RealmComicTypeData.ratingCount.rawValue : Int.random(in: 0...1000),
+                RealmComicTypeData.ratingPoint.rawValue : round(Double.random(in: 1...5)*10)/10,
+                RealmComicTypeData.reviews.rawValue : user.reviews]
+        
     }
     
     func updateFavortie(id_comic: Int){
@@ -104,13 +99,13 @@ class RealmManager: NSObject {
             guard let favorite = self.user.favorites.filter("id_comic == \(id_comic)").first else {
                 let favorite = Favorite(id_user: (self.user.id), id_comic: id_comic)
                 self.user.addFavorite(favorite: favorite)
-                guard let  comic = realm.objects(ComicModel.self).filter("id_comic == \(id_comic)").first else {
-                    let comic = ComicModel(id_comic: id_comic)
-                    comic.addFavorite(favorite: favorite)
-                    realm.add(comic)
-                    return
-                }
-                comic.addFavorite(favorite: favorite)
+//                guard let  comic = realm.objects(ComicModel.self).filter("id_comic == \(id_comic)").first else {
+//                    let comic = ComicModel(id_comic: id_comic)
+//                    comic.addFavorite(favorite: favorite)
+//                    realm.add(comic)
+//                    return
+//                }
+//                comic.addFavorite(favorite: favorite)
                 
                 return
             }
@@ -123,26 +118,26 @@ class RealmManager: NSObject {
         let rating = Rating(id_user: (self.user.id), id_comic: id_comic, rating_point: rating_point, user_level: (self.user.level))
         
         try! realm.write {
-            guard let comic = realm.objects(ComicModel.self).filter("id_comic == \(id_comic)").first else {
-                //comic is not exist in realm db
-                let comic = ComicModel(id_comic: id_comic)
-                comic.addRating(rating: rating)
-                realm.add(comic)
-                self.user.addRating(rating: rating)
-                return
-            }
+//            guard let comic = realm.objects(ComicModel.self).filter("id_comic == \(id_comic)").first else {
+//                //comic is not exist in realm db
+//                let comic = ComicModel(id_comic: id_comic)
+//                comic.addRating(rating: rating)
+//                realm.add(comic)
+//                self.user.addRating(rating: rating)
+//                return
+//            }
             //comic is exist in realm db
             //check if user rated
             guard let usrRating = self.user.ratings.filter("id_comic == \(id_comic)").first else {
                 //user un-rated
                 self.user.addRating(rating: rating)
-                comic.addRating(rating: rating)
+//                comic.addRating(rating: rating)
                 
                 return
             }
             usrRating.rating_point = rating.rating_point
             usrRating.rated_at = rating.rated_at
-            comic.updateRatingPoint()
+//            comic.updateRatingPoint()
         }
     }
     

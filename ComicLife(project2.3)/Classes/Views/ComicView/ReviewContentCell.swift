@@ -58,8 +58,7 @@ class ReviewContentCell: UIView {
     func initData(review: Review){
         self.rating.rating = Double(review.ratingPoint)
         self.commentLbl.text = review.reviewContent
-        let usr_name = RealmManager.shared.getUsrname(id_usr: review.id_user)
-        
+        let usr_name = review.usr_name
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd,yyyy"
         let date = dateFormatter.string(from: review.reviewed_at)

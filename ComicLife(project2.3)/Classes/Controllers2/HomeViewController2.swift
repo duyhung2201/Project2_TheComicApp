@@ -8,10 +8,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
-    var newestComics = [HomeModel]()
-    var popularComics = [HomeModel]()
-    var suggestComics = [HomeModel]()
+class HomeViewController2: UIViewController {
+    var favorites = [InfoComicModel]()
+    var fvrIdArr = [Int]()
     
     lazy var headerView : HeaderView = {
         let headerView = HeaderView()
@@ -28,7 +27,7 @@ class HomeViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.delegate = self
         tableView.dataSource = self
-        HomeTBViewCell.registerCellByClass(tableView)
+        UsrComicTBViewCell.registerCellByClass(tableView)
         tableView.separatorInset = UIEdgeInsets(top: 0, left: MARGIN20, bottom: 0, right: MARGIN20)
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.showsVerticalScrollIndicator = false
@@ -40,42 +39,23 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initLayout()
-        getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         DispatchQueue.main.async {
-            for i in 0..<3 {
-                (self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? HomeTBViewCell)!.collectionView.reloadData()
+            for i in 0..<1 {
+                (self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? UsrComicTBViewCell)!.collectionView.reloadData()
             }
         }
     }
     
-    func getData() {
-        //popular & newest
-        ComicApiManage.shared.getHomeComics { (status, data) in
-            if status {
-                if let data = data {
-                    self.popularComics = data["popular"] as! [HomeModel]
-                    self.newestComics = data["newest"] as! [HomeModel]
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
+    func initData(fvrData: [InfoComicModel], fvrIdArr: [Int]) {
+        self.favorites = fvrData
+        self.fvrIdArr = fvrIdArr
     }
     
-    func setSuggestData(data: [InfoComicModel]){
-        for i in data {
-            for j in 1..<3{
-                self.suggestComics.append(i.similars[j])
-            }
-        }
-    }
-
+    
     func initLayout() {
         self.view.addSubview(headerView)
         self.view.addSubview(tableView)
@@ -95,18 +75,16 @@ class HomeViewController: UIViewController {
     
 }
 
-extension HomeViewController : UITableViewDelegate , UITableViewDataSource {
+extension HomeViewController2 : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        guard let cell = HomeTBViewCell.loadCell(self.tableView) as? HomeTBViewCell else { return BaseTBCell() }
+        guard let cell = UsrComicTBViewCell.loadCell(self.tableView) as? UsrComicTBViewCell else { return BaseTBCell() }
         
         switch indexPath.item {
         case 0:
-            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Top Read Comics", data: self.popularComics)
-           
-        case 1:
-            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Newest Comics", data: self.newestComics)
-        case 2:
-            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Suggest for You", data: self.suggestComics)
+            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Favorite", data: self.favorites, idArr: self.fvrIdArr)
+//
+//        case 1:
+//            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Recently", data: self.newestComics)
             cell.separatorInset = UIEdgeInsets(top: 0, left: SCREEN_WIDTH, bottom: 0, right: 0)
             
         default:
@@ -117,25 +95,27 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
-   
+    
 }
 
-extension HomeViewController: HomeTBCellDelegate {
-    func pushVCToComic(id_comic: Int) {
+extension HomeViewController2: UsrComicTBViewCellDelegate{
+    func pushVCToComic(data: InfoComicModel) {
         let vc = ComicViewController()
-        vc.initData(id_comic: id_comic)
+        vc.data = data
+        vc.id_comic = data.id
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func pushVCToAllComic(title: String, data: [HomeModel]) {
-       
-        let vc = LstComicViewController()
+    func pushVCToAllComic(title: String, data: [InfoComicModel]) {
+        
+        let vc = LstComicViewController2()
         vc.initData(title: title, data: data)
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
+
