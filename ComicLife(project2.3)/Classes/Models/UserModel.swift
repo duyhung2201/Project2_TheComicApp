@@ -21,7 +21,7 @@ class RecentComic: Object {
 
 class User: Object {
     @objc dynamic var id = ""
-    @objc dynamic var password = ""
+    @objc dynamic var password = "" 
     @objc dynamic var nick_name = ""
     @objc dynamic var level:Int = 1
     @objc dynamic var avatar = "avatar720x720"

@@ -8,7 +8,7 @@
 
 import UIKit
 import Cosmos
-import RealmSwift
+import SnapKit
 
 protocol ReviewTBCellDelegate {
     func pushVCToLstReview()
@@ -16,14 +16,14 @@ protocol ReviewTBCellDelegate {
 }
 
 class ReviewTBViewCell: BaseTBCell {
-    var cellIndexPath = 0
-    var id_comic = 0
-    var isInRecently = false
+    lazy var cellIndexPath = 0
+    lazy var id_comic = 0
+    lazy var isInRecently = false
     var delegate : ReviewTBCellDelegate?
     var height = 0
-    var data = List<Review>()
+    var data = [Review]()
     
-    var titleLbl: UILabel = {
+    fileprivate var titleLbl: UILabel = {
         let titleLbl = UILabel()
         titleLbl.font = .boldSystemFont(ofSize: 20)
         
@@ -83,7 +83,7 @@ class ReviewTBViewCell: BaseTBCell {
     }()
     
     lazy var writeReviewLbl: UILabel = {
-       let writeReviewLbl = UILabel()
+        let writeReviewLbl = UILabel()
         let icon = NSTextAttachment()
         icon.image = UIImage(named: "cmt_icon20px")
         let attIcon = NSAttributedString(attachment: icon)
@@ -102,7 +102,7 @@ class ReviewTBViewCell: BaseTBCell {
         return writeReviewLbl
     }()
     
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(titleLbl)
@@ -112,14 +112,14 @@ class ReviewTBViewCell: BaseTBCell {
         self.contentView.addSubview(rating)
         self.contentView.addSubview(writeReviewLbl)
         configCLView()
-        addGesture()
+        addGestureForCLView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func initData(id_comic: Int ,height: Int,title: String, data: List<Review>) {
+    
+    func initData(id_comic: Int ,height: Int,title: String, data: [Review]) {
         self.titleLbl.text = title
         self.data = data 
         self.height = height
@@ -129,7 +129,7 @@ class ReviewTBViewCell: BaseTBCell {
         updateView()
     }
     
-    func addGesture() {
+    func addGestureForCLView() {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeRight))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeLeft))
@@ -177,35 +177,41 @@ class ReviewTBViewCell: BaseTBCell {
         delegate?.pushVCToWriteReView()
     }
     
-    
-    //MARK : setLayout
+    var clHeight : Constraint!
+    //MARK: set layout
     func initLayout() {
-        self.titleLbl.snp.makeConstraints { (make) in
-            make.left.top.equalTo(MARGIN20)
-        }
+//        self.titleLbl.snp.makeConstraints { (make) in
+//            make.left.top.equalTo(MARGIN20)
+//        }
         self.collectionView.snp.makeConstraints { (make) in
             make.top.equalTo(rating.snp.bottom).offset(5)
             make.right.equalTo(0)
             make.left.equalTo(0)
-            make.height.equalTo(self.height)
+            make.bottom.equalTo(0)
+            clHeight = make.height.equalTo(self.height).constraint
         }
-        self.seeAllLbl.snp.makeConstraints { (make) in
-            make.right.equalTo(-MARGIN20)
-            make.centerY.equalTo(titleLbl)
-        }
-        self.tapToRateLbl.snp.makeConstraints { (make) in
-            make.left.equalTo(MARGIN20)
-            make.centerY.equalTo(rating)
-        }
-        self.rating.snp.makeConstraints { (make) in
-            make.right.equalTo(-MARGIN20)
-            make.top.equalTo(titleLbl.snp.bottom).offset(0)
-        }
-        self.writeReviewLbl.snp.makeConstraints { (make) in
-            make.left.equalTo(MARGIN20)
-            make.top.equalTo(collectionView.snp.bottom).offset(5)
-            make.bottom.equalTo(-MARGIN20)
-        }
+//        self.seeAllLbl.snp.makeConstraints { (make) in
+//            make.right.equalTo(-MARGIN20)
+//            make.centerY.equalTo(titleLbl)
+//        }
+//        self.tapToRateLbl.snp.makeConstraints { (make) in
+//            make.left.equalTo(MARGIN20)
+//            make.centerY.equalTo(rating)
+//        }
+//        self.rating.snp.makeConstraints { (make) in
+//            make.right.equalTo(-MARGIN20)
+//            make.top.equalTo(titleLbl.snp.bottom).offset(0)
+//        }
+//        self.writeReviewLbl.snp.makeConstraints { (make) in
+//            make.left.equalTo(MARGIN20)
+//            make.top.equalTo(collectionView.snp.bottom).offset(5)
+//            make.bottom.equalTo(-MARGIN20)
+//        }
+    }
+    
+    func updateHeight() {
+        self.clHeight.update(offset: 300)
+        self.updateConstraints()
     }
     
 }
@@ -250,6 +256,7 @@ extension ReviewTBViewCell: UICollectionViewDataSource, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        delegate?.pushVCToComic(id_comic: data[indexPath.row].id)
+        //        delegate?.pushVCToComic(id_comic: data[indexPath.row].id)
     }
+    
 }

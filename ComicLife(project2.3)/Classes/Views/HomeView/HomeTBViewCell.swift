@@ -144,8 +144,8 @@ extension HomeTBViewCell: UICollectionViewDataSource, UICollectionViewDelegateFl
             return BaseCLCell()
         }
         
-        let realmData = RealmManager.shared.getRealmComicData(id_comic: data[indexPath.row].id)
-        cell.initData(imgHeight: self.imgHeight, data: data[indexPath.row], realmData: realmData)
+//        let realmData = RealmManager.shared.getRealmComicData(id_comic: data[indexPath.row].id)
+        cell.initData(imgHeight: self.imgHeight, data: data[indexPath.row])
         return cell
     }
     

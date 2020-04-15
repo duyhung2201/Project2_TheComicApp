@@ -48,7 +48,7 @@ public let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
 public let OS_VERSION = UIDevice.current.systemVersion
 
 public let COL_CELL_WIDTH = 140
-public let COL_CELL_HEIGHT = 180
+public let COL_CELL_HEIGHT = 100
 public let COL_CELL_HEIGHT2 = 150
 
 public let MARGIN20: CGFloat = 20

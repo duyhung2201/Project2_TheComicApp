@@ -11,13 +11,13 @@ import UIKit
 class HeaderView: UIView {
     var imgHeight = 0
     
-    lazy var img : UIImageView = {
-        let img = UIImageView()
-        img.layer.masksToBounds = true
-        img.layer.cornerRadius = CGFloat(self.imgHeight/2)
-        img.contentMode = .scaleToFill
+    lazy var avatar : UIImageView = {
+        let avatar = UIImageView()
+        avatar.layer.masksToBounds = true
+        avatar.layer.cornerRadius = CGFloat(self.imgHeight/2)
+        avatar.contentMode = .scaleToFill
         
-        return img
+        return avatar
     }()
     
     var title : UILabel = {
@@ -39,7 +39,7 @@ class HeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(title)
-        self.addSubview(img)
+        self.addSubview(avatar)
         self.addSubview(sub_title)
         
     }
@@ -50,8 +50,8 @@ class HeaderView: UIView {
     
     func initData(imgHeight:Int, title: String, sub_title: String, imgUrl: String) {
         self.imgHeight = imgHeight
-        img.image = UIImage(named: imgUrl)
-        img.layer.cornerRadius = CGFloat(imgHeight/2)
+        avatar.image = UIImage(named: imgUrl)
+        avatar.layer.cornerRadius = CGFloat(imgHeight/2)
         self.title.text = title
         self.sub_title.text = sub_title
         initLayout()
@@ -67,7 +67,7 @@ class HeaderView: UIView {
             make.top.equalTo(sub_title.snp.bottom)
             make.bottom.equalTo(-MARGIN7)
         }
-        self.img.snp.makeConstraints { (make) in
+        self.avatar.snp.makeConstraints { (make) in
             make.right.equalTo(-MARGIN20)
             make.centerY.equalTo(self)
             make.width.height.equalTo(self.imgHeight)

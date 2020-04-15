@@ -77,21 +77,17 @@ class RealmManager: NSObject {
     }
     
     func getRealmComicData(id_comic: Int) -> [String : Any] {
-//        guard let comic = realm.objects(ComicModel.self).filter("id_comic == \(id_comic)").first else {
-//            return [RealmComicTypeData.fvrState.rawValue : false,
-//                    RealmComicTypeData.fvrCount.rawValue : 0,
-//                    RealmComicTypeData.ratingCount.rawValue : 0,
-//                    RealmComicTypeData.ratingPoint.rawValue : 0.0,
-//                    RealmComicTypeData.reviews.rawValue : List<Review>()]
-//        }
+        var reviews = [Review]()
+        for i in user.reviews.filter("id_comic == \(id_comic)") {
+            reviews.append(i)
+        }
         
         return [RealmComicTypeData.fvrState.rawValue : isFavorited(id_comic: id_comic),
                 RealmComicTypeData.fvrCount.rawValue : Int.random(in: 0...1000),
                 RealmComicTypeData.reviewCount.rawValue : Int.random(in: 0...1000),
                 RealmComicTypeData.ratingCount.rawValue : Int.random(in: 0...1000),
                 RealmComicTypeData.ratingPoint.rawValue : round(Double.random(in: 1...5)*10)/10,
-                RealmComicTypeData.reviews.rawValue : user.reviews]
-        
+                RealmComicTypeData.reviews.rawValue : reviews]
     }
     
     func updateFavortie(id_comic: Int){

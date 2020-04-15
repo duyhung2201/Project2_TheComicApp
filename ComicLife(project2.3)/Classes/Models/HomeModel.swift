@@ -9,6 +9,8 @@
 import Foundation
 import SwiftyJSON
 
+
+
 class HomeModel: NSObject {
     
 //    title": "Bloodshot: Rising Spirit",
@@ -18,9 +20,6 @@ class HomeModel: NSObject {
 //    "issue_name": "Issue # 7",
 //    "id": 5465
 //},
-//    "_id": 5392,
-//    "title": "Marvel Zombie (2018)",
-//    "cover": "https://comicpunch.net/pics4/bork07.jpg"
     
     var imgUrl: String = ""
     var title: String = ""

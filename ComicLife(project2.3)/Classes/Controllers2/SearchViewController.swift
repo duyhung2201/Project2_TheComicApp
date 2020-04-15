@@ -22,27 +22,28 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         SearchTBViewCell.registerCellByClass(tableView)
+        tableView.tableHeaderView = self.searchController.searchBar
         
         return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Search"
         self.view.addSubview(tableView)
         
         // Setup the Search Controller
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Comic Life"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+        searchController.searchBar.placeholder = "Search Comic"
+//        definesPresentationContext = true
+        self.searchController.searchBar.backgroundColor = .white
         
         initLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
+        (self.tabBarController as! HomeTabbarViewController).titleNaviBarLbl.text = "Search"
+        (self.tabBarController as! HomeTabbarViewController).titleNaviBarLbl.font = UIFont.boldSystemFont(ofSize: 30)
     }
     
     
@@ -72,6 +73,13 @@ class SearchViewController: UIViewController {
     }
     
     func initLayout() {
+//        self.searchController.view.snp.makeConstraints { (make) in
+//            make.left.equalTo(<#view#>)
+//            make.right.equalTo(<#view#>)
+//            make.top.equalTo(<#view#>)
+//            make.bottom.equalTo(<#view#>)
+//        }
+        
         self.tableView.snp.makeConstraints { (make) in
             make.left.equalTo(0)
             make.right.equalTo(0)

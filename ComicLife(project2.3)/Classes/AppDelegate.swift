@@ -20,53 +20,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        RealmManager.shared.setDefaultRealmPath(path: "Comic_Life_v1")
         
-        RealmManager.shared.printRealmUrl()
-        let navi = UINavigationController(rootViewController: LoginViewController())
-        navi.navigationBar.isTranslucent = false
-        let defaults = UserDefaults.standard
-        if defaults.string(forKey: USER_KEY) != nil {
-            
-            if RealmManager.shared.setUser(id_usr: defaults.string(forKey: USER_KEY)!) {
-                navi.pushViewController(HomeTabbarViewController(), animated: false)
-            }
-        }
-        else {
-//            defaults.set("duyhung2201@gmail.com", forKey: USER_KEY)
-        }
+//        RealmManager.shared.printRealmUrl()
         
-        navi.navigationBar.isHidden = true
-        navi.navigationBar.isTranslucent = false
+//        let navi = UINavigationController(rootViewController: HomeViewController())
+//        navi.navigationBar.isTranslucent = false
+//        let img = UIImage()
+//        navi.navigationBar.shadowImage = img
+//        navi.navigationBar.setBackgroundImage(img, for: .default)
+//
+//        let defaults = UserDefaults.standard
+//        if defaults.string(forKey: USER_KEY) != nil {
+//
+//            if RealmManager.shared.setUser(id_usr: defaults.string(forKey: USER_KEY)!) {
+//                navi.pushViewController(HomeTabbarViewController(), animated: false)
+//            }
+//        }
+//        else {
+////            defaults.set("duyhung2201@gmail.com", forKey: USER_KEY)
+//        }
+        
         window = UIWindow()
         window?.backgroundColor = .white
-        window?.rootViewController = navi
+        window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         window?.makeKeyAndVisible()
         return true
     }
-    
-    func setHomeTabbarVC() -> UITabBarController {
-        let tabbarVC = UITabBarController()
-        
-        let naviHome = UINavigationController(rootViewController: HomeViewController())
-        naviHome.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "homeIcon"), tag: 1)
-        
-        let lstFvr = LstComicViewController()
-        lstFvr.getSuggestData(idArr: RealmManager.shared.user.getIdFvr())
-        let naviFvr = UINavigationController(rootViewController: lstFvr)
-        lstFvr.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
-        
-        let lstRecent = LstComicViewController()
-        lstRecent.getSuggestData(idArr: RealmManager.shared.user.getIdRecent())
-        let naviRecent = UINavigationController(rootViewController: lstRecent)
-        naviRecent.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 3)
-        
-        let naviSearch = UINavigationController(rootViewController: SearchViewController())
-        naviSearch.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 4)
-        
-        tabbarVC.viewControllers = [naviHome, naviFvr, naviRecent ,naviSearch]
-        
-        return tabbarVC
-    }
-    
 
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -12,6 +12,7 @@
 		1840E49622BA33790096B1E8 /* HomeTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840E49522BA33790096B1E8 /* HomeTabbarViewController.swift */; };
 		1840E49822BA908F0096B1E8 /* HomeViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840E49722BA908E0096B1E8 /* HomeViewController2.swift */; };
 		1840E49A22BA9B7E0096B1E8 /* LstComicViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840E49922BA9B7E0096B1E8 /* LstComicViewController2.swift */; };
+		18489ECB22BCF75000489509 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18489ECA22BCF75000489509 /* CustomNavigationBar.swift */; };
 		184EC21922AD13E2000D9CEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC21822AD13E2000D9CEB /* AppDelegate.swift */; };
 		184EC22322AD13E4000D9CEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184EC22122AD13E4000D9CEB /* LaunchScreen.storyboard */; };
 		184EC27222AD1634000D9CEB /* HomeCLViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EC24A22AD1634000D9CEB /* HomeCLViewCell.swift */; };
@@ -52,7 +53,7 @@
 		18769EDD22ADFEC600217313 /* WriteReviewTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18769EDC22ADFEC600217313 /* WriteReviewTBViewCell.swift */; };
 		189824FD22AE57E6002AA97E /* LstIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189824FC22AE57E6002AA97E /* LstIssueViewController.swift */; };
 		1898250022AE5B56002AA97E /* LstIssueTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189824FF22AE5B56002AA97E /* LstIssueTBViewCell.swift */; };
-		18BE270722BB3E2600264EB5 /* 2ndComicTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE270622BB3E2600264EB5 /* 2ndComicTBViewCell.swift */; };
+		18BE270722BB3E2600264EB5 /* SecondComicTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE270622BB3E2600264EB5 /* SecondComicTBViewCell.swift */; };
 		18CB959322AF438C00A98667 /* TodayComicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB959222AF438C00A98667 /* TodayComicViewController.swift */; };
 		18CB959522AF442900A98667 /* TodayComicTBViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB959422AF442900A98667 /* TodayComicTBViewCell.swift */; };
 		18CB959722AF4A8700A98667 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CB959622AF4A8700A98667 /* HeaderView.swift */; };
@@ -73,6 +74,7 @@
 		1840E49522BA33790096B1E8 /* HomeTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabbarViewController.swift; sourceTree = "<group>"; };
 		1840E49722BA908E0096B1E8 /* HomeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController2.swift; sourceTree = "<group>"; };
 		1840E49922BA9B7E0096B1E8 /* LstComicViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LstComicViewController2.swift; sourceTree = "<group>"; };
+		18489ECA22BCF75000489509 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		184EC21522AD13E2000D9CEB /* ComicLife(project2.3).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComicLife(project2.3).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		184EC21822AD13E2000D9CEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184EC22222AD13E4000D9CEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,7 +117,7 @@
 		18769EDC22ADFEC600217313 /* WriteReviewTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewTBViewCell.swift; sourceTree = "<group>"; };
 		189824FC22AE57E6002AA97E /* LstIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LstIssueViewController.swift; sourceTree = "<group>"; };
 		189824FF22AE5B56002AA97E /* LstIssueTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LstIssueTBViewCell.swift; sourceTree = "<group>"; };
-		18BE270622BB3E2600264EB5 /* 2ndComicTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 2ndComicTBViewCell.swift; sourceTree = "<group>"; };
+		18BE270622BB3E2600264EB5 /* SecondComicTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondComicTBViewCell.swift; sourceTree = "<group>"; };
 		18CB959222AF438C00A98667 /* TodayComicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayComicViewController.swift; sourceTree = "<group>"; };
 		18CB959422AF442900A98667 /* TodayComicTBViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayComicTBViewCell.swift; sourceTree = "<group>"; };
 		18CB959622AF4A8700A98667 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -208,8 +210,9 @@
 		184EC24C22AD1634000D9CEB /* ComicView */ = {
 			isa = PBXGroup;
 			children = (
+				18489ECA22BCF75000489509 /* CustomNavigationBar.swift */,
 				184EC24D22AD1634000D9CEB /* TopComicTBViewCell.swift */,
-				18BE270622BB3E2600264EB5 /* 2ndComicTBViewCell.swift */,
+				18BE270622BB3E2600264EB5 /* SecondComicTBViewCell.swift */,
 				184EC25022AD1634000D9CEB /* SummaryComicTBViewCell.swift */,
 				184EC24E22AD1634000D9CEB /* InfoComicTBViewCell.swift */,
 				184EC25222AD1634000D9CEB /* LineInfoComicTBViewCell.swift */,
@@ -449,7 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184EC27A22AD1634000D9CEB /* LstComicTBViewCell.swift in Sources */,
-				18BE270722BB3E2600264EB5 /* 2ndComicTBViewCell.swift in Sources */,
+				18BE270722BB3E2600264EB5 /* SecondComicTBViewCell.swift in Sources */,
 				184EC27C22AD1634000D9CEB /* HomeTBViewCell.swift in Sources */,
 				1840E49822BA908F0096B1E8 /* HomeViewController2.swift in Sources */,
 				18CB959C22AF5F0000A98667 /* SignupViewController.swift in Sources */,
@@ -492,6 +495,7 @@
 				184EC28122AD1634000D9CEB /* ComicModel.swift in Sources */,
 				184EC28822AD1634000D9CEB /* HomeModel.swift in Sources */,
 				1898250022AE5B56002AA97E /* LstIssueTBViewCell.swift in Sources */,
+				18489ECB22BCF75000489509 /* CustomNavigationBar.swift in Sources */,
 				184EC28522AD1634000D9CEB /* RatingModel.swift in Sources */,
 				184EC29022AD1634000D9CEB /* BaseTBCell.swift in Sources */,
 				184EC28B22AD1634000D9CEB /* LstComicViewController.swift in Sources */,

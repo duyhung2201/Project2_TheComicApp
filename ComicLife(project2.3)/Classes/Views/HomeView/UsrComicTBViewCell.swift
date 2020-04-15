@@ -10,7 +10,7 @@ import UIKit
 
 protocol UsrComicTBViewCellDelegate {
     func pushVCToComic(data: InfoComicModel)
-    func pushVCToAllComic(title: String, data: [InfoComicModel])
+    func pushVCToLstComic(title: String, data: [InfoComicModel])
 }
 
 class UsrComicTBViewCell: BaseTBCell {
@@ -111,7 +111,7 @@ class UsrComicTBViewCell: BaseTBCell {
     }
     
     @objc func tapSeeAll() {
-        delegate?.pushVCToAllComic(title: self.titleLbl.text!, data: data)
+        delegate?.pushVCToLstComic(title: self.titleLbl.text!, data: data)
     }
     
     func initData(imgHeight: Int,title: String, data: [InfoComicModel], idArr: [Int]) {
@@ -162,8 +162,7 @@ extension UsrComicTBViewCell: UICollectionViewDataSource, UICollectionViewDelega
             return BaseCLCell()
         }
         
-        let realmData = RealmManager.shared.getRealmComicData(id_comic: data[indexPath.row].id)
-        cell.initData(imgHeight: self.imgHeight, data: data[indexPath.row].similars[0], realmData: realmData)
+        cell.initData(imgHeight: self.imgHeight, data: data[indexPath.row].similars[0])
         return cell
     }
     

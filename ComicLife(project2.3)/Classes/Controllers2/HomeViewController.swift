@@ -11,17 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
     var newestComics = [HomeModel]()
     var popularComics = [HomeModel]()
-    var suggestComics = [HomeModel]()
-    
-    lazy var headerView : HeaderView = {
-        let headerView = HeaderView()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM dd"
-        let date = dateFormatter.string(from: Date())
-        headerView.initData(imgHeight: 44, title: "Today", sub_title: date, imgUrl: RealmManager.shared.user.avatar)
-        
-        return headerView
-    }()
+    var tempComics = [HomeModel]()
     
     lazy var tableView :UITableView = {
         let tableView = UITableView()
@@ -32,7 +22,7 @@ class HomeViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: MARGIN20, bottom: 0, right: MARGIN20)
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.showsVerticalScrollIndicator = false
-        
+        tableView.tableHeaderView = UIView(frame: .zero)
         
         return tableView
     }()
@@ -40,11 +30,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initLayout()
-        getData()
+//        getData()
+        testQueue()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+        setNavigationBar()
         DispatchQueue.main.async {
             for i in 0..<3 {
                 (self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? HomeTBViewCell)!.collectionView.reloadData()
@@ -53,44 +44,115 @@ class HomeViewController: UIViewController {
     }
     
     func getData() {
-        //popular & newest
-        ComicApiManage.shared.getHomeComics { (status, data) in
-            if status {
-                if let data = data {
-                    self.popularComics = data["popular"] as! [HomeModel]
-                    self.newestComics = data["newest"] as! [HomeModel]
-                    
+       
+//        ComicApiManage.shared.getHomeComics { (status, data) in
+//            if status {
+//                if let data = data {
+//                    self.popularComics = data["popular"] as! [HomeModel]
+//                    self.newestComics = data["newest"] as! [HomeModel]
+//
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                    }
+//                }
+//            }
+//        }
+        
+        let group = DispatchGroup()
+        group.enter()
+        ComicApiManage.shared.getHomeComics(completion: { (success, data) in
+            self.popularComics = data!["popular"] as! [HomeModel]
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            group.leave()
+        })
+        
+        group.notify(queue: .main) {
+            DispatchQueue.main.async {
+                ComicApiManage.shared.getHomeComics(completion: { (success, data) in
+                    self.tempComics = data!["popular"] as! [HomeModel]
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                }
+                })
+                ComicApiManage.shared.getHomeComics(completion: { (success, data) in
+                    self.newestComics = data!["newest"] as! [HomeModel]
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                })
             }
         }
+        
     }
     
-    func setSuggestData(data: [InfoComicModel]){
-        for i in data {
-            for j in 1..<3{
-                self.suggestComics.append(i.similars[j])
-            }
+    var a = false
+    var b = false
+    var c = false
+    
+    func testQueue() {
+        DispatchQueue.main.async {
+        let group = DispatchGroup()
+        let semaphore = DispatchSemaphore(value: 1)
+            ComicApiManage.shared.getHomeComics(completion: { (success, data) in
+                self.popularComics = data!["popular"] as! [HomeModel]
+                self.a = true
+                semaphore.signal()
+                print("A")
+            })
+//            group.enter()
+            ComicApiManage.shared.getHomeComics(completion: { (success, data) in
+                self.newestComics = data!["popular"] as! [HomeModel]
+                self.b = true
+               print("B")
+            })
+            
+            semaphore.wait()
+            semaphore.wait()
+            
+//            group.enter()
+            ComicApiManage.shared.getHomeComics(completion: { (success, data) in
+                self.tempComics = data!["popular"] as! [HomeModel]
+                self.c = true
+//                group.leave()
+//                group.leave()
+                print("C")
+            })
+            
+            group.notify(queue: .main, execute: {
+                print(self.a.description + self.b.description + self.c.description)
+                print("success")
+            })
         }
     }
 
     func initLayout() {
-        self.view.addSubview(headerView)
+//        self.view.addSubview(headerView)
         self.view.addSubview(tableView)
-        self.headerView.snp.makeConstraints { (make) in
-            make.left.equalTo(0)
-            make.right.equalTo(0)
-            make.top.equalTo(self.view).offset(44)
-        }
+//        self.headerView.snp.makeConstraints { (make) in
+//            make.left.equalTo(0)
+//            make.right.equalTo(0)
+//            make.top.equalTo(self.view).offset(44)
+//        }
         self.tableView.snp.makeConstraints { (make) in
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.top.equalTo(headerView.snp.bottom)
+            make.top.equalTo(0)
             make.bottom.equalTo(0)
         }
         
+    }
+    
+    func setNavigationBar() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMM dd"
+        let date = dateFormatter.string(from: Date())
+        let lbl = NSMutableAttributedString(string: "\(date)\n", attributes: [NSAttributedString.Key.foregroundColor : GRAY_COLOR, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
+        let lbl2 = NSAttributedString(string: "Today", attributes: [ NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 22)])
+        lbl.append(lbl2)
+        
+//        (self.tabBarController as! HomeTabbarViewController).titleNaviBarLbl.attributedText = lbl
     }
     
 }
@@ -106,8 +168,7 @@ extension HomeViewController : UITableViewDelegate , UITableViewDataSource {
         case 1:
             cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Newest Comics", data: self.newestComics)
         case 2:
-            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Suggest for You", data: self.suggestComics)
-            cell.separatorInset = UIEdgeInsets(top: 0, left: SCREEN_WIDTH, bottom: 0, right: 0)
+            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Temp Comics", data: self.tempComics)
             
         default:
             break

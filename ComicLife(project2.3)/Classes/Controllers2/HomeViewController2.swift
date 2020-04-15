@@ -9,8 +9,10 @@
 import UIKit
 
 class HomeViewController2: UIViewController {
-    var favorites = [InfoComicModel]()
+    var favoriteData = [InfoComicModel]()
     var fvrIdArr = [Int]()
+    var recentData = [InfoComicModel]()
+    var recentIdArr = [Int]()
     
     lazy var headerView : HeaderView = {
         let headerView = HeaderView()
@@ -42,7 +44,6 @@ class HomeViewController2: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
         DispatchQueue.main.async {
             for i in 0..<1 {
                 (self.tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? UsrComicTBViewCell)!.collectionView.reloadData()
@@ -50,9 +51,11 @@ class HomeViewController2: UIViewController {
         }
     }
     
-    func initData(fvrData: [InfoComicModel], fvrIdArr: [Int]) {
-        self.favorites = fvrData
+    func initData(fvrData: [InfoComicModel], fvrIdArr: [Int], recentData: [InfoComicModel], recentIdArr: [Int]) {
+        self.favoriteData = fvrData
         self.fvrIdArr = fvrIdArr
+        self.recentData = recentData
+        self.recentIdArr = recentIdArr
     }
     
     
@@ -81,10 +84,10 @@ extension HomeViewController2 : UITableViewDelegate , UITableViewDataSource {
         
         switch indexPath.item {
         case 0:
-            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Favorite", data: self.favorites, idArr: self.fvrIdArr)
-//
-//        case 1:
-//            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Recently", data: self.newestComics)
+            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Favorite", data: self.favoriteData, idArr: self.fvrIdArr)
+
+        case 1:
+            cell.initData(imgHeight: COL_CELL_HEIGHT, title: "Recently", data: self.recentData, idArr: self.recentIdArr)
             cell.separatorInset = UIEdgeInsets(top: 0, left: SCREEN_WIDTH, bottom: 0, right: 0)
             
         default:
@@ -95,7 +98,7 @@ extension HomeViewController2 : UITableViewDelegate , UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
 }
@@ -103,13 +106,12 @@ extension HomeViewController2 : UITableViewDelegate , UITableViewDataSource {
 extension HomeViewController2: UsrComicTBViewCellDelegate{
     func pushVCToComic(data: InfoComicModel) {
         let vc = ComicViewController()
-        vc.data = data
-        vc.id_comic = data.id
+        vc.initData2(data: data, id_comic: data.id)
         
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func pushVCToAllComic(title: String, data: [InfoComicModel]) {
+    func pushVCToLstComic(title: String, data: [InfoComicModel]) {
         
         let vc = LstComicViewController2()
         vc.initData(title: title, data: data)

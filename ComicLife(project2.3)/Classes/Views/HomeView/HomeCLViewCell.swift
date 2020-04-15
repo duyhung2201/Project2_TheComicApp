@@ -29,16 +29,16 @@ class HomeCLViewCell: BaseCLCell {
     }
     
     
-    func initData(imgHeight: Int, data: HomeModel, realmData: [String : Any]){
+    func initData(imgHeight: Int, data: HomeModel){
         
         imgComicView.initData(imgHeight: imgHeight,
                                   id_comic: data.id,
                                   imgUrl: data.imgUrl,
                                   title: data.title,
                                   sub_title: data.issueName,
-                                  favoriteState: realmData[RealmComicTypeData.fvrState.rawValue]! as! Bool,
-                                  ratingPoint: realmData[RealmComicTypeData.ratingPoint.rawValue]! as! Double,
-                                  ratingCount: realmData[RealmComicTypeData.ratingCount.rawValue]! as! Int)
+                                  favoriteState: true,
+                                  ratingPoint: 4.0,
+                                  ratingCount: 12)
         
         setUpLayout()
     }
